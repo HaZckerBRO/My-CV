@@ -1,0 +1,136 @@
+*
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+
+.header
+	position: absolute
+	padding-left: 100px
+	//padding: 0 50px
+	top: 0
+	right: 0
+	left: 0
+	bottom: 0
+	overflow-x: hidden
+
+.header__introduction
+	display: flex
+	justify-content: space-around
+	align-items: flex-start
+	flex-wrap: wrap
+	min-height: 50%
+	//border-bottom: 1px solid red
+
+.bcg
+	position: absolute
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+	opacity: 0
+	overflow: hidden
+	background: #000 url('../images/night city.jpg') no-repeat 90% 40%
+	z-index: -30
+	//filter: blur(2px)
+	transition: opacity .5s ease-in-out, background-position 40s linear
+
+.photo
+	width: 300px
+	height: 300px
+	margin: 50px 50px 50px 100px
+	border-radius: 50%
+	position: relative
+	overflow: hidden
+	filter: grayscale(0.3)
+	border: 2px  solid darkgray
+	transition: border-color .3s linear
+	&:hover
+		border-color: yellow
+
+.photo__image
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	background: #000 url('../images/myPhoto.png') no-repeat 55% 50%
+	background-size: 100%
+	filter: grayscale(1)
+
+.motion
+	background-position: 10% 40%
+
+
+.hello
+	margin: auto
+	text-align: center
+	font-family: 'Yeon Sung'
+	padding: 10px
+	width: 50%
+	min-width: 320px
+	background-color: rgba(0, 0, 0, 0.7)
+	font-size: 24px
+	border-radius: 10px
+	color: black
+	text-shadow: 0px 0px 5px white
+	box-shadow: 0 0 20px 5px rgba(0,0,0, 0.5)
+.name,
+.surname
+	font-weight: bold
+	font-size: 54px
+	text-transform: uppercase
+	font-family: 'Bowlby One SC'
+	color: #e6ff2e
+	color: black
+	text-shadow: 0px 0px 5px white
+
+.name
+	margin-right: 30px
+
+.invisible
+	opacity: 0
+
+
+
+.about-me
+	display: flex
+	flex-wrap: wrap
+	flex-direction: column
+	justify-content: center
+	min-height: 50%
+	padding: 50px 50px 50px 100px
+	font-family: 'Roboto', sans-serif
+	background-color: rgba(0,0,0, .7)
+	overflow: hidden
+	font-size: 30px
+	letter-spacing: 2.5px
+	div
+		position: relative
+		min-width: 320px
+		width: 40%
+		align-self: flex-start
+		margin-bottom: 10px
+		text-transform: uppercase
+		opacity: 0
+		transform: translateX(-1000px)
+		transition: transform .5s linear, opacity .5s ease-in-out
+		b
+			color: red
+
+	div:nth-child(2)
+		align-self: center
+		transform: translateX(0)
+		transition:  opacity 1s ease-in-out
+		b
+			color: #e6ff2e
+			color: darkorange
+	div:nth-child(3)
+		align-self: flex-end
+		transform: translateX(1000px)
+		b
+			color: lime
+	div:first-letter
+		font-family: 'Trade Winds'
+		font-size: 42px
+
+
