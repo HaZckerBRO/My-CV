@@ -8,15 +8,11 @@ let divCounter = 0;
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    // setTimeout(()=>{
-        hello.className = 'hello slide-in-blurred-right';
-        bcg.style.opacity = '1';
-        leftSidebar.style.opacity = '1';
-    // }, 0)
-    
-    // setTimeout(()=>{
-        photo.className = 'photo slide-in-blurred-left';
-    // }, 1000)
+
+    hello.className = 'hello slide-in-blurred-right';
+    bcg.style.opacity = '1';
+    leftSidebar.style.opacity = '1';
+    photo.className = 'photo slide-in-blurred-left';
 
     setTimeout(()=>{
         bcg.className = "bcg motion";

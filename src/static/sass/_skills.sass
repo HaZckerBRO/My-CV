@@ -1,32 +1,91 @@
 #skills
-   background-color: rgba(255,255,255, 0.7)
-   padding: 20px
+   background-color: rgba(255,255,255, 1)
+   padding: 20px 0
    color: black
    font-family: 'PT Sans', sans-serif
    font-size: 22px
-   border: 1px solid black
+   min-height: 100%
+
    .skills__title
       font-size: 48px
       font-family: 'Bowlby One SC'
+      margin-bottom: 30px
       font-weight: normal
       text-align: center
       text-transform: uppercase
-      color: orangered
+
+   .skills__items
+      display: flex
+      justify-content: space-around
+      flex-direction: row
 
    .item
-      text-align: center
-      margin-bottom: 20px
-      border: 1px solid blue
-
+      display: flex
+      justify-content: space-around
+      flex-direction: row
+      padding: 0 10px
+      align-items: center
+      align-content: center
+      min-width: 320px
+      max-width: 640px
+      margin: 10px 10px 30px 10px
    .icon
-      img
-         width: 64px
+      position: relative
+      width: 64px
       &::after
+         position: absolute
          display: block
          content: attr(data-skill)
+         text-align: center
          font-size: 12px
+         left: 0
+         right: 0
          text-transform: uppercase
          font-family: Roboto
          font-weight: bold
-         //content: "alter"
          color: black
+      img
+         width: 64px
+
+   .level
+      position: relative
+      height: 30px
+      border-radius: 5px
+      flex-grow: 1
+      border: 2px solid gray
+      background-color: white
+      margin: 15px 15px 0 15px
+      overflow: hidden
+      &::after
+         content: ""
+         position: absolute
+         left: 0
+         right: 0
+         top: 0
+         bottom: 0
+         background-color: gold
+         transform: translateX(-100%)
+
+.group
+   display: inline-block
+   position: relative
+   border: 1px solid black
+   border-radius: 10px
+   padding: 30px 10px 10px 10px
+   min-width: 520px
+   &::before
+      display: block
+      margin: 0 auto
+      content: attr(data-group-title)
+      position: absolute
+      padding: 10px
+      font-size: 22px
+      text-transform: uppercase
+      font-family: Roboto
+      font-weight: bold
+      height: 30px
+      top: -25px
+      left: 20px
+      text-align: center
+      background-color: white
+      color: gray
