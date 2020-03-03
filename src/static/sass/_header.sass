@@ -3,10 +3,9 @@
 	margin: 0
 	padding: 0
 
-.header
+.wrapper
 	position: absolute
 	padding-left: 100px
-	//padding: 0 50px
 	top: 0
 	right: 0
 	left: 0
@@ -19,19 +18,19 @@
 	align-items: flex-start
 	flex-wrap: wrap
 	min-height: 50%
-	//border-bottom: 1px solid red
 
 .bcg
-	position: absolute
+	position: fixed
 	top: 0
 	right: 0
 	bottom: 0
 	left: 0
 	opacity: 0
 	overflow: hidden
-	background: #000 url('../images/night city.jpg') no-repeat 90% 40%
+	//background: #000 url('../images/night city.jpg') no-repeat 90% 40%
+	background: #000 url('../images/night city(low).jpg') no-repeat 90% 40%
+	background-size: 250%
 	z-index: -30
-	//filter: blur(2px)
 	transition: opacity .5s ease-in-out, background-position 40s linear
 
 .photo
@@ -58,20 +57,21 @@
 	filter: grayscale(1)
 
 .motion
-	background-position: 10% 40%
+	background-position: 0% 40%
 
 
 .hello
 	margin: auto
 	text-align: center
-	font-family: 'Yeon Sung'
+	font-family: 'PT Sans'
+	text-transform: uppercase
 	padding: 10px
 	width: 50%
 	min-width: 320px
 	background-color: rgba(0, 0, 0, 0.7)
 	font-size: 24px
 	border-radius: 10px
-	color: black
+	color: white
 	text-shadow: 0px 0px 5px white
 	box-shadow: 0 0 20px 5px rgba(0,0,0, 0.5)
 .name,
@@ -129,8 +129,11 @@
 		transform: translateX(1000px)
 		b
 			color: lime
-	div:first-letter
-		font-family: 'Trade Winds'
+	div p:first-letter
+		font-family: 'Yeon Sung' !important
 		font-size: 42px
+
+
+
 
 
