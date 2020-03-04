@@ -2,3 +2,6 @@
 .idea/
 node_modules/
 *.log
+
+build/images/night city(big).jpg
+build/images/myPhoto(big).png
