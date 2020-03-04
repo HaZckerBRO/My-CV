@@ -50,21 +50,25 @@
    .level
       position: relative
       height: 30px
-      border-radius: 5px
+      padding: 0
       flex-grow: 1
       border: 2px solid gray
       background-color: white
       margin: 15px 15px 0 15px
       overflow: hidden
-      &::after
-         content: ""
-         position: absolute
-         left: 0
-         right: 0
-         top: 0
-         bottom: 0
+      .level__counter
+         display: block
+         width: 100%
+         height: 40px
          background-color: gold
-         transform: translateX(-100%)
+      &::after
+         content: attr(data-level)
+         position: absolute
+         text-align: center
+         font-weight: bold
+         font-size: 16px
+         left: 45%
+         top: 3px
 
 .group
    display: inline-block

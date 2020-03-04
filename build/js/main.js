@@ -8,7 +8,6 @@ let divCounter = 0;
 
 
 document.addEventListener("DOMContentLoaded", () => {
-
     hello.className = 'hello slide-in-blurred-right';
     bcg.style.opacity = '1';
     leftSidebar.style.opacity = '1';
@@ -30,4 +29,15 @@ let slowShowDiv = function() {
 }
 
 let divTimer = setInterval(slowShowDiv, 1000);
+
+let skills = document.getElementById('skills'),
+    levels = skills.querySelectorAll('.level');
+
+for (let i=0; i<levels.length; i++){
+    let lvlCounter = levels[i].querySelector('.level__counter');
+    let level = lvlCounter.dataset.level
+    let percent = 100-level
+
+    lvlCounter.style.transform = `translateX(-${percent}%)`;
+}
 
