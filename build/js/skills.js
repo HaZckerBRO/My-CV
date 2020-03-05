@@ -15,30 +15,51 @@ let skillsList = [
     },
     {
         title: "JavaScript",
-        percent: 90,
+        percent: 70,
         imageSrc: "images/skills/JavaScript.png",
         group: "Frontend",
         color: "gold"
     },
     {
         title: "ES6",
-        percent: 90,
+        percent: 80,
         imageSrc: "images/skills/ES6.png",
         group: "Frontend",
         color: "gold"
     },
     {
         title: "React",
-        percent: 90,
+        percent: 50,
         imageSrc: "images/skills/React.png",
         group: "Frontend",
         color: "gold"
     },
     {
         title: "Python Django",
-        percent: 90,
+        percent: 30,
         imageSrc: "images/skills/Python.png",
         group: "Backend",
+        color: "gold"
+    },
+    {
+        title: "GitHub",
+        percent: 70,
+        imageSrc: "images/skills/GitHub.png",
+        group: "Instruments",
+        color: "gold"
+    },
+    {
+        title: "Gulp",
+        percent: 70,
+        imageSrc: "images/skills/Gulp.png",
+        group: "Instruments",
+        color: "gold"
+    },
+    {
+        title: "Sass",
+        percent: 80,
+        imageSrc: "images/skills/Sass.png",
+        group: "Instruments",
         color: "gold"
     },
 ];
@@ -52,15 +73,15 @@ document.addEventListener("DOMContentLoaded", () => {
         backendList = '',
         otherList = '';
 
-    for (let i=0; i<skillsList.length; i++){
+    for (let i = 0; i < skillsList.length; i++) {
         let itemGroup = skillsList[i].group;
-        if ( itemGroup == "Frontend"){
-           let item = createItems(skillsList[i])
-           frontendList += item
-        }else if (itemGroup == "Backend"){
+        if (itemGroup == "Frontend") {
+            let item = createItems(skillsList[i])
+            frontendList += item
+        } else if (itemGroup == "Backend") {
             let item = createItems(skillsList[i])
             backendList += item
-        }else{
+        } else {
             let item = createItems(skillsList[i])
             otherList += item
         }
@@ -79,8 +100,8 @@ function createItems(obj) {
             <div class="skills__level-wrapper">
                 <p class="level-title">${obj.title}</p>
                 <div class="level">
-                    <div class="percent">${obj.percent}</div>
-                    <div class="level-bar" data-color="${obj.color}"></div>
+                    <div class="percent"></div>
+                    <div class="level-bar" data-color="${obj.color}" data-level="${obj.percent}"></div>
                 </div>
             </div>
         </div>
