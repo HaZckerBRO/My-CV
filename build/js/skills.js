@@ -4,63 +4,72 @@ let skillsList = [
         percent: 90,
         imageSrc: "images/skills/HTML5.png",
         group: "Frontend",
-        color: "gold"
+        color: "white",
+        bcgColor: "#F16529"
     },
     {
         title: "CSS3",
         percent: 90,
         imageSrc: "images/skills/CSS3.png",
         group: "Frontend",
-        color: "gold"
+        color: "white",
+        bcgColor: "#168dc9"
     },
     {
         title: "JavaScript",
         percent: 70,
         imageSrc: "images/skills/JavaScript.png",
         group: "Frontend",
-        color: "gold"
+        color: "white",
+        bcgColor: "#EB5E00"
     },
     {
         title: "ES6",
         percent: 80,
         imageSrc: "images/skills/ES6.png",
         group: "Frontend",
-        color: "gold"
+        color: "black",
+        bcgColor: "yellow"
     },
     {
         title: "React",
-        percent: 50,
+        percent: 60,
         imageSrc: "images/skills/React.png",
         group: "Frontend",
-        color: "gold"
+        color: "#00DBFC",
+        bcgColor: "#292929"
     },
     {
         title: "Python Django",
         percent: 30,
         imageSrc: "images/skills/Python.png",
         group: "Backend",
-        color: "gold"
+        color: "black",
+        bcgColor: "#00C902"
     },
     {
         title: "GitHub",
         percent: 70,
         imageSrc: "images/skills/GitHub.png",
         group: "Instruments",
-        color: "gold"
+        color: "white",
+        bcgColor: "#4B4B4B"
     },
     {
         title: "Gulp",
         percent: 70,
         imageSrc: "images/skills/Gulp.png",
         group: "Instruments",
-        color: "gold"
+        color: "white",
+        bcgColor: "#F34945"
     },
     {
         title: "Sass",
         percent: 80,
         imageSrc: "images/skills/Sass.png",
         group: "Instruments",
-        color: "gold"
+        color: "white",
+        bcgColor: "#CC6699"
     },
 ];
 
@@ -100,8 +109,8 @@ function createItems(obj) {
             <div class="skills__level-wrapper">
                 <p class="level-title">${obj.title}</p>
                 <div class="level">
-                    <div class="percent"></div>
-                    <div class="level-bar" data-color="${obj.color}" data-level="${obj.percent}"></div>
+                    <div class="percent" style="color: ${obj.color}"></div>
+                    <div class="level-bar" style="background-color: ${obj.bcgColor};" data-level="${obj.percent}"></div>
                 </div>
             </div>
         </div>

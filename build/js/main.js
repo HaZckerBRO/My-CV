@@ -4,10 +4,17 @@ let bcg = document.querySelector('.bcg'),
     leftSidebar = document.querySelector('.left-sidebar'),
     aboutMe = document.querySelector('.about-me'),
     divs = aboutMe.querySelectorAll('div');
+let part1 = document.getElementById('part-1')
+let part2 = document.getElementById('part-2')
 let divCounter = 0;
 let countWheel = 0;
+let windowHeight = document.documentElement.clientHeight;
+document.doIt = true
 
 document.addEventListener("DOMContentLoaded", () => {
+    part1.style.minHeight = windowHeight+"px";
+    part2.style.minHeight = windowHeight+"px";
+    part2.style.opacity = 1;
     hello.className = 'hello slide-in-blurred-right';
     bcg.style.opacity = '1';
     leftSidebar.style.opacity = '1';
@@ -32,12 +39,8 @@ let divTimer = setInterval(slowShowDiv, 1000);
 
 let skills = document.getElementById('skills');
 
-
-skills.addEventListener('click', () => {
-    addFunction()
-})
-
 function addFunction() {
+    document.doIt = false;
     let levels = document.querySelectorAll('.level');
 
     for (let i = 0; i < levels.length; i++) {
@@ -66,11 +69,18 @@ function changeWidthBar(elem, width, lvl) {
 }
 
 
-window.addEventListener("wheel", (evt)=>{
+window.addEventListener("scroll", (evt)=>{
 
     console.log(window.pageYOffset)
 
-    setTimeout(()=>{countWheel=0}, 2000)
-})
+    if (window.pageYOffset >= 500 && document.doIt) {
+        document.doIt = false;
+        setTimeout(addFunction, 250);
+    }
 
+    setTimeout(()=>{
+        countWheel=0;
+        // window.scrollTo(0, windowHeight)
+    }, 2000)
+})
 

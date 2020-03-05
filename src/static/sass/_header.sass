@@ -4,12 +4,7 @@
 	padding: 0
 
 .wrapper
-	position: absolute
 	padding-left: 100px
-	top: 0
-	right: 0
-	left: 0
-	bottom: 0
 	overflow-x: hidden
 
 .header__introduction
@@ -17,7 +12,6 @@
 	justify-content: space-around
 	align-items: flex-start
 	flex-wrap: wrap
-	min-height: 50%
 
 .bcg
 	position: fixed
@@ -78,8 +72,7 @@
 	font-weight: bold
 	font-size: 54px
 	text-transform: uppercase
-	font-family: 'Bowlby One SC'
-	color: #e6ff2e
+	font-family: 'Bowlby One SC', sans-serif
 	color: black
 	text-shadow: 0px 0px 5px white
 
@@ -89,15 +82,15 @@
 .invisible
 	opacity: 0
 
-
-
 .about-me
 	display: flex
 	flex-wrap: wrap
 	flex-direction: column
 	justify-content: center
-	min-height: 50%
-	position: relative
+	position: absolute
+	left: 100px
+	right: 0
+	bottom: 0
 	padding: 50px 50px 50px 100px
 	font-family: 'Roboto', sans-serif
 	background-color: rgba(0,0,0, .7)
@@ -122,7 +115,6 @@
 		transform: translateX(0)
 		transition:  opacity 1s ease-in-out
 		b
-			color: #e6ff2e
 			color: darkorange
 	div:nth-child(3)
 		align-self: flex-end
@@ -130,7 +122,7 @@
 		b
 			color: lime
 	div p:first-letter
-		font-family: 'Yeon Sung' !important
+		font-family: 'Yeon Sung', sans-serif
 		font-size: 42px
 
 
