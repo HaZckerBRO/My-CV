@@ -38,6 +38,18 @@ for (let i=0; i<levels.length; i++){
     let level = lvlCounter.dataset.level
     let percent = 100-level
 
-    lvlCounter.style.transform = `translateX(-${percent}%)`;
+    lvlCounter.style.transform = "translateX(-100%)"
+}
+
+skills.addEventListener('click', ()=>{
+    for (let i=0; i<levels.length; i++){
+        let item = levels[i].querySelector('.level__counter');
+        let level = item.dataset.level;
+        addFunction(item, level)
+    }
+})
+
+function addFunction(item, level) {
+
 }
 
