@@ -5,6 +5,7 @@ let bcg = document.querySelector('.bcg'),
     aboutMe = document.querySelector('.about-me'),
     divs = aboutMe.querySelectorAll('div');
 let divCounter = 0;
+let countWheel = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
     hello.className = 'hello slide-in-blurred-right';
@@ -63,4 +64,13 @@ function changeWidthBar(elem, width, lvl) {
         }, 25)
     }
 }
+
+
+window.addEventListener("wheel", (evt)=>{
+
+    console.log(window.pageYOffset)
+
+    setTimeout(()=>{countWheel=0}, 2000)
+})
+
 

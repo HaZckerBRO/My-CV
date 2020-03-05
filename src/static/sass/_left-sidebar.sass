@@ -7,3 +7,43 @@
 	opacity: 0
 	transition: opacity .5s ease-in-out
 	border-right: 1px solid black
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+	align-content: center
+	z-index: 50
+	img
+		width: 32px
+		transition: transform .5s ease-in-out
+
+	.item
+		position: relative
+		width: 100%
+		text-align: center
+		padding: 15px 0
+		margin: 20px 0
+		border-right: 5px solid transparent
+		cursor: pointer
+		transition: border-right-color .3s ease-in-out
+		&:hover img
+			transform: scale(1.2)
+		&:hover .link
+			opacity: 1
+			color: aqua
+			transform: scale(1.2)
+
+	.link
+		text-transform: uppercase
+		position: absolute
+		display: block
+		text-align: center
+		left: 0
+		right: 0
+		bottom: -7px
+		font-size: 12px
+		opacity: 0
+		transition: opacity .3s ease-in-out, color .6s ease-in-out, transform .5s ease-in-out
+
+	.active
+		border-right-color: aqua
