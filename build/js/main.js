@@ -1,13 +1,12 @@
-let bcg = document.querySelector('.bcg'),
+const bcg = document.querySelector('.bcg'),
     photo = document.querySelector('.photo'),
     hello = document.querySelector('.hello'),
     leftSidebar = document.querySelector('.left-sidebar'),
     aboutMe = document.querySelector('.about-me'),
     divs = aboutMe.querySelectorAll('div');
-let part1 = document.getElementById('part-1')
-let part2 = document.getElementById('part-2')
+const part1 = document.getElementById('part-1')
+const part2 = document.getElementById('part-2')
 let divCounter = 0;
-let countWheel = 0;
 let windowHeight = document.documentElement.clientHeight;
 document.doIt = true
 
@@ -29,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 let slowShowDiv = function () {
+
     if (divCounter >= divs.length - 1)
         clearInterval(divTimer)
     divs[divCounter].className += ' on-own-position';
@@ -68,19 +68,11 @@ function changeWidthBar(elem, width, lvl) {
     }
 }
 
-
 window.addEventListener("scroll", (evt)=>{
-
     console.log(window.pageYOffset)
-
     if (window.pageYOffset >= 500 && document.doIt) {
         document.doIt = false;
         setTimeout(addFunction, 250);
     }
-
-    setTimeout(()=>{
-        countWheel=0;
-        // window.scrollTo(0, windowHeight)
-    }, 2000)
 })
 
