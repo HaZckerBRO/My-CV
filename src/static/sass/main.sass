@@ -22,3 +22,100 @@ html
 	transition: opacity 0.3s ease-in-out
 	opacity: 0
 
+
+#modal
+	display: none
+	position: fixed
+	top: 0
+	left: 0
+	bottom: 0
+	right: 0
+	color: black
+	background-color: rgba(0,0,0, 0.8)
+	z-index: 1000
+
+	h3
+		text-align: center
+		font-size: 26px
+		text-transform: uppercase
+		font-weight: bold
+		font-family: 'Bowlby One SC', sans-serif
+	.short-info
+		margin: auto
+		min-height: 200px
+		position: relative
+		width: 30%
+		min-width: 320px
+		max-width: 740px
+		background-color: white
+		padding: 20px 10px 50px 10px
+		overflow-x: hidden
+		&__footer
+			a
+				display: block
+				font-weight: bold
+				text-transform: uppercase
+				text-decoration: none
+				color: black
+				padding: 5px 10px
+			.link
+				text-transform: none
+				color: dodgerblue
+			.addition
+				text-transform: none
+				font-size: 16px
+				font-weight: normal
+				color: gray
+
+	.my-skills
+		display: flex
+		flex-direction: row
+		justify-content: space-between
+		flex-wrap: wrap
+		margin-bottom: 20px
+	.skill
+		color: black
+		display: flex
+		justify-content: space-between
+		align-items: center
+		flex-direction: row
+		font-weight: bold
+		padding: 5px 10px
+		width: 40%
+		margin: 5px 0
+		.percent
+			color: #00DBFC
+		p
+			margin: 0 20px
+	.price
+		background-color: #292929
+		position: relative
+		min-width: 320px
+		width: 110%
+		left: -10px
+		font-size: 18px
+		color: white
+		font-family: 'PTSans', sans-serif
+		padding: 15px 5% 20px 10px
+		margin-bottom: 10px
+		b
+			color: #00DBFC
+		h3
+			color: white
+			font-family: 'PTSans', sans-serif
+
+#modal-close
+	padding: 10px 20px
+	border: 2px solid #343a40
+	position: absolute
+	bottom: 5px
+	right: 5px
+	border-radius: 5px
+	color: #fff
+	background-color: #343a40
+	transition: background-color .3s linear
+	cursor: pointer
+	&:hover
+		background-color: darken(#343a40, 10%)
+
+

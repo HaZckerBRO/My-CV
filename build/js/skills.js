@@ -73,14 +73,20 @@ let skillsList = [
     },
 ];
 
+let isSkillsCreated = false;
+let frontendList = '',
+    backendList = '',
+    otherList = '';
+
+
+let modal = document.getElementById('modal');
+let shortInfo = modal.querySelector('.short-info');
+
 document.addEventListener("DOMContentLoaded", () => {
     let skills = document.getElementById('skills'),
         frontendGroup = skills.querySelector('.frontend'),
         backendGroup = skills.querySelector('.backend'),
         otherGroup = skills.querySelector('.other');
-    let frontendList = '',
-        backendList = '',
-        otherList = '';
 
     for (let i = 0; i < skillsList.length; i++) {
         let itemGroup = skillsList[i].group;
@@ -99,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     insertItemsToGroup(frontendGroup, frontendList);
     insertItemsToGroup(backendGroup, backendList);
     insertItemsToGroup(otherGroup, otherList);
+    isSkillsCreated = true;
 
 });
 
@@ -121,3 +128,78 @@ function createItems(obj) {
 function insertItemsToGroup(group, items) {
     group.insertAdjacentHTML('afterbegin', items);
 }
+
+function showShortInfo() {
+    shortInfo.classList.contains('flip-out-ver-right') ? shortInfo.classList = 'short-info' : shortInfo.classList = 'short-info';
+    let content = '';
+    let skillContent = '';
+    let priceContent = '';
+    let contactContent = '';
+
+    skillContent = `
+        <h3>Skills</h3>
+        <div class="my-skills">
+    `;
+
+    for (let i=0; i<skillsList.length; i++){
+        skillContent += `
+            <div class="skill">
+                <p class="title">${skillsList[i].title}</p>
+                <p class="percent">${skillsList[i].percent}%</p>
+            </div>
+        `;
+    }
+    skillContent += "</div>"
+
+    priceContent = `
+        <div class="price">
+            <h3>What I want</h3>
+            <p>From <span class="dollar"><b>$1,100</b></span> per month</p>
+            <p><b>40 hours</b> a week</p>
+            <p>Also you can offer your work schedule</p>
+            
+        </div>
+    `
+
+    contactContent = `
+        
+        <footer class='short-info__footer'>
+            <h3>Contacts</h3>
+            <a href="mailto:bro171194@gmail.com">E-mail: <p class="link">bro171194@gmail.com</p></a>
+            <a href="https://vk.com/br000000">Vkontakte: <p class="link">https://vk.com/br000000</p></a>
+            <a href="https://www.facebook.com/BRO.SB.17">Facebook: <p class="link">https://www.facebook.com/BRO.SB.17</p> <p class="addition">(I rarely go there. Better write to the mail or VK)</p></a>
+        </footer>
+    `;
+
+    content += skillContent;
+    content += priceContent;
+    content += contactContent;
+    content += `<button type="button" id="modal-close">Close</button>`
+    shortInfo.insertAdjacentHTML('afterbegin', content)
+
+    let modalCloseBtn = document.getElementById('modal-close');
+
+    modal.addEventListener('click', (evt)=>{
+        let canBeClose = evt.target == modal && !evt.target.classList.contains('short-info') || evt.target == document.getElementById('modal-close');
+        if (canBeClose){
+            shortInfo.className += ' flip-out-ver-right';
+            modal.classList.remove('scale-in-center')
+            setTimeout(()=>{
+                shortInfo.className = 'short-info';
+                modal.style.display = 'none';
+
+            }, 450)
+        }
+    })
+}
+
+showShortInfo();
+
+document.querySelector('.photo').addEventListener('click', openModal);
+
+function openModal() {
+    modal.className = 'scale-in-center'
+    modal.style.display = 'flex'
+}
+
+

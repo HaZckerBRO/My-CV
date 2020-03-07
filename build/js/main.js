@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 let slowShowDiv = function () {
-
     if (divCounter >= divs.length - 1)
         clearInterval(divTimer)
     divs[divCounter].className += ' on-own-position';
@@ -42,7 +41,6 @@ let skills = document.getElementById('skills');
 function addFunction() {
     document.doIt = false;
     let levels = document.querySelectorAll('.level');
-
     for (let i = 0; i < levels.length; i++) {
         let item = levels[i].querySelector('.level-bar');
         let lvl = item.dataset.level;
@@ -69,7 +67,6 @@ function changeWidthBar(elem, width, lvl) {
 }
 
 window.addEventListener("scroll", (evt)=>{
-    console.log(window.pageYOffset)
     if (window.pageYOffset >= 500 && document.doIt) {
         document.doIt = false;
         setTimeout(addFunction, 250);
