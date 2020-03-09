@@ -90,15 +90,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (let i = 0; i < skillsList.length; i++) {
         let itemGroup = skillsList[i].group;
-        if (itemGroup == "Frontend") {
-            let item = createItems(skillsList[i])
-            frontendList += item
-        } else if (itemGroup == "Backend") {
-            let item = createItems(skillsList[i])
-            backendList += item
-        } else {
-            let item = createItems(skillsList[i])
-            otherList += item
+        let item = null;
+
+        switch (itemGroup) {
+            case "Frontend":
+                item = createItems(skillsList[i]);
+                frontendList += item;
+                break;
+            case "Backend":
+                item = createItems(skillsList[i]);
+                backendList += item;
+                break;
+            default:
+                item = createItems(skillsList[i]);
+                otherList += item;
         }
     }
 
@@ -132,11 +137,7 @@ function insertItemsToGroup(group, items) {
 function showShortInfo() {
     shortInfo.classList.contains('flip-out-ver-right') ? shortInfo.classList = 'short-info' : shortInfo.classList = 'short-info';
     let content = '';
-    let skillContent = '';
-    let priceContent = '';
-    let contactContent = '';
-
-    skillContent = `
+    let skillContent = `
         <h3>Skills</h3>
         <div class="my-skills">
     `;
@@ -151,7 +152,7 @@ function showShortInfo() {
     }
     skillContent += "</div>"
 
-    priceContent = `
+    let priceContent = `
         <div class="price">
             <h3>What I want</h3>
             <p>From <span class="dollar"><b>$1,100</b></span> per month</p>
@@ -161,7 +162,7 @@ function showShortInfo() {
         </div>
     `
 
-    contactContent = `
+    let contactContent = `
         
         <footer class='short-info__footer'>
             <h3>Contacts</h3>
@@ -179,8 +180,9 @@ function showShortInfo() {
 
     let modalCloseBtn = document.getElementById('modal-close');
 
+    // closing the modal window
     modal.addEventListener('click', (evt)=>{
-        let canBeClose = evt.target == modal && !evt.target.classList.contains('short-info') || evt.target == document.getElementById('modal-close');
+        let canBeClose = evt.target == modal && !evt.target.classList.contains('short-info') || evt.target == modalCloseBtn;
         if (canBeClose){
             shortInfo.className += ' flip-out-ver-right';
             modal.classList.remove('scale-in-center')

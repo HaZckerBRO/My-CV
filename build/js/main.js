@@ -1,9 +1,9 @@
 const bcg = document.querySelector('.bcg'),
-    photo = document.querySelector('.photo'),
-    hello = document.querySelector('.hello'),
-    leftSidebar = document.querySelector('.left-sidebar'),
-    aboutMe = document.querySelector('.about-me'),
-    divs = aboutMe.querySelectorAll('div');
+      photo = document.querySelector('.photo'),
+      hello = document.querySelector('.hello'),
+      leftSidebar = document.querySelector('.left-sidebar'),
+      aboutMe = document.querySelector('.about-me'),
+      divs = aboutMe.querySelectorAll('div');
 const part1 = document.getElementById('part-1')
 const part2 = document.getElementById('part-2')
 let divCounter = 0;
@@ -36,9 +36,7 @@ let slowShowDiv = function () {
 
 let divTimer = setInterval(slowShowDiv, 1000);
 
-let skills = document.getElementById('skills');
-
-function addFunction() {
+function initializeLevelSkill() {
     document.doIt = false;
     let levels = document.querySelectorAll('.level');
     for (let i = 0; i < levels.length; i++) {
@@ -69,7 +67,7 @@ function changeWidthBar(elem, width, lvl) {
 window.addEventListener("scroll", (evt)=>{
     if (window.pageYOffset >= 500 && document.doIt) {
         document.doIt = false;
-        setTimeout(addFunction, 250);
+        setTimeout(initializeLevelSkill, 250);
     }
 })
 
