@@ -1,83 +1,19 @@
 let skillsList = [
-    {
-        title: "HTML 5",
-        percent: 90,
-        imageSrc: "images/skills/HTML5.png",
-        group: "Frontend",
-        color: "white",
-        bcgColor: "#F16529"
-    },
-    {
-        title: "CSS3",
-        percent: 90,
-        imageSrc: "images/skills/CSS3.png",
-        group: "Frontend",
-        color: "white",
-        bcgColor: "#168dc9"
-    },
-    {
-        title: "JavaScript",
-        percent: 70,
-        imageSrc: "images/skills/JavaScript.png",
-        group: "Frontend",
-        color: "white",
-        bcgColor: "#EB5E00"
-    },
-    {
-        title: "ES6",
-        percent: 80,
-        imageSrc: "images/skills/ES6.png",
-        group: "Frontend",
-        color: "black",
-        bcgColor: "yellow"
-    },
-    {
-        title: "React",
-        percent: 60,
-        imageSrc: "images/skills/React.png",
-        group: "Frontend",
-        color: "#00DBFC",
-        bcgColor: "#292929"
-    },
-    {
-        title: "Python Django",
-        percent: 30,
-        imageSrc: "images/skills/Python.png",
-        group: "Backend",
-        color: "black",
-        bcgColor: "#00C902"
-    },
-    {
-        title: "GitHub",
-        percent: 70,
-        imageSrc: "images/skills/GitHub.png",
-        group: "Instruments",
-        color: "white",
-        bcgColor: "#4B4B4B"
-    },
-    {
-        title: "Gulp",
-        percent: 70,
-        imageSrc: "images/skills/Gulp.png",
-        group: "Instruments",
-        color: "white",
-        bcgColor: "#F34945"
-    },
-    {
-        title: "Sass",
-        percent: 80,
-        imageSrc: "images/skills/Sass.png",
-        group: "Instruments",
-        color: "white",
-        bcgColor: "#CC6699"
-    },
+    {   title: "HTML 5",        percent: 90, imageSrc: "images/skills/HTML5.png",       group: "Frontend",      color: "#ffffff",     bcgColor: "#F16529"},
+    {   title: "CSS3",          percent: 90, imageSrc: "images/skills/CSS3.png",        group: "Frontend",      color: "#ffffff",     bcgColor: "#168dc9"},
+    {   title: "JavaScript",    percent: 70, imageSrc: "images/skills/JavaScript.png",  group: "Frontend",      color: "#ffffff",     bcgColor: "#EB5E00"},
+    {   title: "ES6",           percent: 80, imageSrc: "images/skills/ES6.png",         group: "Frontend",      color: "#000000",     bcgColor: "#FFFF00"},
+    {   title: "React",         percent: 60, imageSrc: "images/skills/React.png",       group: "Frontend",      color: "#00DBFC",     bcgColor: "#292929"},
+    {   title: "Python Django", percent: 30, imageSrc: "images/skills/Python.png",      group: "Backend",       color: "#000000",     bcgColor: "#00C902"},
+    {   title: "GitHub",        percent: 70, imageSrc: "images/skills/GitHub.png",      group: "Instruments",   color: "#ffffff",     bcgColor: "#4B4B4B"},
+    {   title: "Gulp",          percent: 70, imageSrc: "images/skills/Gulp.png",        group: "Instruments",   color: "#ffffff",     bcgColor: "#F34945"},
+    {   title: "Sass",          percent: 80, imageSrc: "images/skills/Sass.png",        group: "Instruments",   color: "#ffffff",     bcgColor: "#CC6699"},
 ];
 
 let isSkillsCreated = false;
 let frontendList = '',
     backendList = '',
     otherList = '';
-
 
 let modal = document.getElementById('modal');
 let shortInfo = modal.querySelector('.short-info');
@@ -134,6 +70,7 @@ function insertItemsToGroup(group, items) {
     group.insertAdjacentHTML('afterbegin', items);
 }
 
+// Modal short info
 function showShortInfo() {
     shortInfo.classList.contains('flip-out-ver-right') ? shortInfo.classList = 'short-info' : shortInfo.classList = 'short-info';
     let content = '';
@@ -160,7 +97,7 @@ function showShortInfo() {
             <p>Also you can offer your work schedule</p>
             
         </div>
-    `
+    `;
 
     let contactContent = `
         
