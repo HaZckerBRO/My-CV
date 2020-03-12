@@ -4,8 +4,13 @@ const bcg = document.querySelector('.bcg'),
       leftSidebar = document.querySelector('.left-sidebar'),
       aboutMe = document.querySelector('.about-me'),
       divs = aboutMe.querySelectorAll('div');
-const part1 = document.getElementById('part-1')
-const part2 = document.getElementById('part-2')
+const part1 = document.getElementById('part-1');
+const part2 = document.getElementById('part-2');
+const part3 = document.getElementById('part-3');
+const part2_blocks = document.querySelector('.skills__items');
+const part3_blocks = part3.querySelector('.blocks');
+const activeNav = document.getElementById('active');
+
 let divCounter = 0;
 let windowHeight = document.documentElement.clientHeight;
 document.doIt = true
@@ -13,6 +18,10 @@ document.doIt = true
 document.addEventListener("DOMContentLoaded", () => {
     part1.style.minHeight = windowHeight+"px";
     part2.style.minHeight = windowHeight+"px";
+    part3.style.minHeight = windowHeight+"px";
+    part2_blocks.style.minHeight = (windowHeight/1.5)+"px";
+    part3_blocks.style.minHeight = (windowHeight/1.5)+"px";
+
     part2.style.opacity = 1;
     hello.className = 'hello slide-in-blurred-right';
     bcg.style.opacity = '1';
@@ -25,6 +34,17 @@ document.addEventListener("DOMContentLoaded", () => {
             bcg.classList.contains('motion') ? bcg.classList.remove('motion') : bcg.classList.add('motion');
         }, 50000)
     }, 3200);
+
+
+    // ------------------------- SCROLL DOESNT WORK  --------------------------
+    let menuItems = document.querySelector('.navigation');
+    menuItems.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        window.scrollTo(0, 1000);
+        alert('scroll')
+    });
+    // -------------------------------------------------------------------------
+
 });
 
 let slowShowDiv = function () {
@@ -69,5 +89,18 @@ window.addEventListener("scroll", (evt)=>{
         document.doIt = false;
         setTimeout(initializeLevelSkill, 250);
     }
-})
+    changeActiveNavPosition();
+});
+
+function changeActiveNavPosition() {
+    windowHeight = document.documentElement.clientHeight;
+    let mainContentHeight = document.querySelector('.main-content').offsetHeight;
+    let navbarHeight = document.querySelector('.navigation').offsetHeight - 74;
+    let maxScroll = mainContentHeight - windowHeight;
+    let windowScrollProcent = window.pageYOffset/maxScroll*100;
+    let activeNavPos = navbarHeight * windowScrollProcent / 100;
+
+    activeNav.style.top = `${activeNavPos}px`
+}
+
 

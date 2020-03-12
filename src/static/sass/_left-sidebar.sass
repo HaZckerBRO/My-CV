@@ -15,37 +15,58 @@
 	z-index: 50
 	@media only screen and (max-width: 550px)
 		display: none
-	img
-		width: 32px
-		transition: transform .5s ease-in-out
 
-	.item
+
+	.navigation
+		display: flex
 		position: relative
 		width: 100%
-		text-align: center
-		padding: 15px 0
-		margin: 20px 0
-		border-right: 5px solid transparent
-		cursor: pointer
-		transition: border-right-color .3s ease-in-out
-		&:hover img
-			transform: scale(1.2)
-		&:hover .link
-			opacity: 1
-			color: aqua
-			transform: scale(1.2)
+		height: 320px
+		justify-content: space-between
+		align-items: center
+		align-content: space-between
+		flex-wrap: wrap
+		.item
+			position: relative
+			width: 100%
+			text-align: center
+			padding: 15px 0 25px 0
+			margin: 20px 0
+			cursor: pointer
+			&:first-child
+				margin-top: 0
+			&:last-of-type
+				margin-bottom: 0
 
-	.link
-		text-transform: uppercase
-		position: absolute
-		display: block
-		text-align: center
-		left: 0
-		right: 0
-		bottom: -7px
-		font-size: 12px
-		opacity: 0
-		transition: opacity .3s ease-in-out, color .6s ease-in-out, transform .5s ease-in-out
+			&:hover img
+				transform: scale(1.2)
+			&:hover .link
+				opacity: 1
+				color: aqua
+				transform: scale(1.2)
+		img
+			width: 32px
+			transition: transform .5s ease-in-out
 
-	.active
-		border-right-color: aqua
+
+		.link
+			text-transform: uppercase
+			position: absolute
+			display: block
+			text-align: center
+			left: 0
+			right: 0
+			bottom: -7px
+			font-size: 12px
+			opacity: 0
+			transition: opacity .3s ease-in-out, color .6s ease-in-out, transform .5s ease-in-out
+
+		#active
+			content: ""
+			display: block
+			position: absolute
+			top: 0
+			height: 74px
+			right: 0
+			width: 5px
+			background-color: aqua

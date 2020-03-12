@@ -1,13 +1,13 @@
 let skillsList = [
-    {   title: "HTML 5",        percent: 90, imageSrc: "images/skills/HTML5.png",       group: "Frontend",      color: "#ffffff",     bcgColor: "#F16529"},
-    {   title: "CSS3",          percent: 90, imageSrc: "images/skills/CSS3.png",        group: "Frontend",      color: "#ffffff",     bcgColor: "#168dc9"},
-    {   title: "JavaScript",    percent: 70, imageSrc: "images/skills/JavaScript.png",  group: "Frontend",      color: "#ffffff",     bcgColor: "#EB5E00"},
-    {   title: "ES6",           percent: 80, imageSrc: "images/skills/ES6.png",         group: "Frontend",      color: "#000000",     bcgColor: "#FFFF00"},
-    {   title: "React",         percent: 60, imageSrc: "images/skills/React.png",       group: "Frontend",      color: "#00DBFC",     bcgColor: "#292929"},
-    {   title: "Python Django", percent: 30, imageSrc: "images/skills/Python.png",      group: "Backend",       color: "#000000",     bcgColor: "#00C902"},
-    {   title: "GitHub",        percent: 70, imageSrc: "images/skills/GitHub.png",      group: "Instruments",   color: "#ffffff",     bcgColor: "#4B4B4B"},
-    {   title: "Gulp",          percent: 70, imageSrc: "images/skills/Gulp.png",        group: "Instruments",   color: "#ffffff",     bcgColor: "#F34945"},
-    {   title: "Sass",          percent: 80, imageSrc: "images/skills/Sass.png",        group: "Instruments",   color: "#ffffff",     bcgColor: "#CC6699"},
+    { title: "HTML 5",          percent: 90,    imageSrc: "images/skills/HTML5.png",        group: "Frontend",      color: "#ffffff",   bcgColor: "#F16529"},
+    { title: "CSS3",            percent: 90,    imageSrc: "images/skills/CSS3.png",         group: "Frontend",      color: "#ffffff",   bcgColor: "#168dc9"},
+    { title: "JavaScript",      percent: 70,    imageSrc: "images/skills/JavaScript.png",   group: "Frontend",      color: "#ffffff",   bcgColor: "#EB5E00"},
+    { title: "ES6",             percent: 80,    imageSrc: "images/skills/ES6.png",          group: "Frontend",      color: "#000000",   bcgColor: "#FFFF00"},
+    { title: "React",           percent: 20,    imageSrc: "images/skills/React.png",        group: "Frontend",      color: "#00DBFC",   bcgColor: "#292929"},
+    { title: "Python Django",   percent: 35,    imageSrc: "images/skills/Python.png",       group: "Backend",       color: "#000000",   bcgColor: "#00C902"},
+    { title: "GitHub",          percent: 70,    imageSrc: "images/skills/GitHub.png",       group: "Instruments",   color: "#ffffff",   bcgColor: "#4B4B4B"},
+    { title: "Gulp",            percent: 70,    imageSrc: "images/skills/Gulp.png",         group: "Instruments",   color: "#ffffff",   bcgColor: "#F34945"},
+    { title: "Sass",            percent: 80,    imageSrc: "images/skills/Sass.png",         group: "Instruments",   color: "#ffffff",   bcgColor: "#CC6699"},
 ];
 
 let isSkillsCreated = false;
@@ -24,24 +24,24 @@ document.addEventListener("DOMContentLoaded", () => {
         backendGroup = skills.querySelector('.backend'),
         otherGroup = skills.querySelector('.other');
 
-    for (let i = 0; i < skillsList.length; i++) {
-        let itemGroup = skillsList[i].group;
+    skillsList.forEach((skill) => {
+        let itemGroup = skill.group;
         let item = null;
 
         switch (itemGroup) {
             case "Frontend":
-                item = createItems(skillsList[i]);
+                item = createItems(skill);
                 frontendList += item;
                 break;
             case "Backend":
-                item = createItems(skillsList[i]);
+                item = createItems(skill);
                 backendList += item;
                 break;
             default:
-                item = createItems(skillsList[i]);
+                item = createItems(skill);
                 otherList += item;
         }
-    }
+    });
 
     insertItemsToGroup(frontendGroup, frontendList);
     insertItemsToGroup(backendGroup, backendList);
@@ -79,7 +79,7 @@ function showShortInfo() {
         <div class="my-skills">
     `;
 
-    for (let i=0; i<skillsList.length; i++){
+    for (let i = 0; i < skillsList.length; i++) {
         skillContent += `
             <div class="skill">
                 <p class="title">${skillsList[i].title}</p>
@@ -100,11 +100,11 @@ function showShortInfo() {
     `;
 
     let contactContent = `
-        
         <footer class='short-info__footer'>
             <h3>Contacts</h3>
             <a href="mailto:bro171194@gmail.com">E-mail: <p class="link">bro171194@gmail.com</p></a>
             <a href="https://vk.com/br000000">Vkontakte: <p class="link">https://vk.com/br000000</p></a>
+            <a href="https://t.me/HaZcker">Telegram: <p class="link">@HaZcker</p></a>
             <a href="https://www.facebook.com/BRO.SB.17">Facebook: <p class="link">https://www.facebook.com/BRO.SB.17</p> <p class="addition">(I rarely go there. Better write to the mail or VK)</p></a>
         </footer>
     `;
@@ -118,12 +118,12 @@ function showShortInfo() {
     let modalCloseBtn = document.getElementById('modal-close');
 
     // closing the modal window
-    modal.addEventListener('click', (evt)=>{
+    modal.addEventListener('click', (evt) => {
         let canBeClose = evt.target == modal && !evt.target.classList.contains('short-info') || evt.target == modalCloseBtn;
-        if (canBeClose){
+        if (canBeClose) {
             shortInfo.className += ' flip-out-ver-right';
             modal.classList.remove('scale-in-center')
-            setTimeout(()=>{
+            setTimeout(() => {
                 shortInfo.className = 'short-info';
                 modal.style.display = 'none';
 
@@ -135,6 +135,7 @@ function showShortInfo() {
 showShortInfo();
 
 document.querySelector('.photo').addEventListener('click', openModal);
+document.getElementById('contactMe').addEventListener('click', openModal);
 
 function openModal() {
     modal.className = 'scale-in-center'

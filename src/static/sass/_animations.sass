@@ -8,6 +8,11 @@
       transform: translateX(0) scaleY(1) scaleX(1)
       opacity: 1
 
+@keyframes rotate-colors
+   0%
+      filter: hue-rotate(0)
+   100%
+      filter: hue-rotate(360deg)
 
 @keyframes slide-in-blurred-right
    0%
@@ -66,6 +71,9 @@
 
 .scale-in-center
    animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+
+.rotate-colors
+   animation: rotate-colors 5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite
 
 
 

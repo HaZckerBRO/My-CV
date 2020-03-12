@@ -9,18 +9,21 @@
 </head>
 <body>
 		<aside class="left-sidebar">
-			<a href="#home" class="item active">
-				<img src="images/home.png" alt="Home">
-				<p class="link">Home</p>
-			</a>
-			<a href="#skills" class="item">
-				<img src="images/skills.png" alt="My skills">
-				<p class="link">My skills</p>
-			</a>
-			<a href="#my-targets" class="item">
-				<img src="images/target.png" alt="My targets">
-				<p class="link">My targets</p>
-			</a>
+			<nav class="navigation">
+				<a href="#home" class="item" data-scroll="part-1">
+					<img src="images/home.png" alt="Home">
+					<p class="link">Home</p>
+				</a>
+				<a href="#part-2" class="item" data-scroll="part-2">
+					<img src="images/skills.png" alt="My skills">
+					<p class="link">My skills</p>
+				</a>
+				<a href="#my-targets" class="item" data-scroll="part-3">
+					<img src="images/target.png" alt="My targets">
+					<p class="link">My targets</p>
+				</a>
+				<span id="active"></span>
+			</nav>
 		</aside>
 		<div class="main-content">
 			<div class="wrapper">
@@ -36,7 +39,7 @@
 					</div>
 					<div class="about-me">
 						<div>
-							<p>I am a Junior <b>Frontend</b> Developer
+							<p>I am a strong junior <b>Frontend</b> Developer
 							<br>And I am ready for work and interesting projects</p>
 						</div>
 						<div>
@@ -49,8 +52,8 @@
 				</section>
 				<div class="bcg invisible"></div>
 				<section id="part-2" style="min-height: auto">
+					<h2 class="skills__title">My skills</h2>
 					<div id="skills">
-						<h2 class="skills__title">My skills</h2>
 						<div class="skills__items">
 							<div class="skills__group frontend" data-group-title="Frontend"></div>
 							<div class="skills__group backend" data-group-title="Backend"></div>
@@ -58,11 +61,36 @@
 						</div>
 					</div>
 				</section>
+				<section id="part-3">
+					<h2 id="my-targets">My targets</h2>
+					<div class="blocks">
+						<div class="block">
+							<h3>For the next half year</h3>
+							<ul class="targets targets--now">
+								<li class="item">Earn Money</li>
+								<li class="item">Improve <b>Frontend</b> skills to a strong middle</li>
+								<li class="item">Become a strong <b>React</b> Developer</li>
+								<li class="item">Become a <b>Full Stack Python Django</b> Developer</li>
+							</ul>
+						</div>
+						<div class="block">
+							<h3>For the Future</h3>
+							<ul class="targets targets--future">
+								<li class="item"><b>Improve</b> my skills</li>
+								<li class="item">Learn to develop <b>mobile</b> applications on <b>Android</b> and <b>iOS</b></li>
+								<li class="item">Become a Senior </li>
+								<li class="item">There are many more goals that you don't need to know about</li>
+							</ul>
+						</div>
+					</div>
+					<button id="contactMe" class="rotate-colors">contact me</button>
+				</section>
 			</div>
 		</div>
 		<div id="modal">
 			<div class="short-info"></div>
 		</div>
+
 	<script src="js/skills.js"></script>
 	<script src="js/main.js"></script>
 </body>
