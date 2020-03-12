@@ -37,12 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ------------------------- SCROLL DOESNT WORK  --------------------------
-    let menuItems = document.querySelector('.navigation');
-    menuItems.addEventListener('click', (evt) => {
-        evt.preventDefault();
-        window.scrollTo(0, 1000);
-        alert('scroll')
-    });
+    // let menuItems = document.querySelector('.navigation');
+    // menuItems.addEventListener('click', (evt) => {
+    //     evt.preventDefault();
+    //     window.scrollTo(0, 1000);
+    //     alert('scroll')
+    // });
     // -------------------------------------------------------------------------
 
 });
