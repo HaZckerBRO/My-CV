@@ -10,6 +10,7 @@ const part3 = document.getElementById('part-3');
 const part2_blocks = document.querySelector('.skills__items');
 const part3_blocks = part3.querySelector('.blocks');
 const activeNav = document.getElementById('active');
+let isScrolled = false;
 
 let divCounter = 0;
 let windowHeight = document.documentElement.clientHeight;
@@ -34,17 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
             bcg.classList.contains('motion') ? bcg.classList.remove('motion') : bcg.classList.add('motion');
         }, 50000)
     }, 3200);
-
-
-    // ------------------------- SCROLL DOESNT WORK  --------------------------
-    // let menuItems = document.querySelector('.navigation');
-    // menuItems.addEventListener('click', (evt) => {
-    //     evt.preventDefault();
-    //     window.scrollTo(0, 1000);
-    //     alert('scroll')
-    // });
-    // -------------------------------------------------------------------------
-
 });
 
 let slowShowDiv = function () {
@@ -103,4 +93,35 @@ function changeActiveNavPosition() {
     activeNav.style.top = `${activeNavPos}px`
 }
 
+let menuItems = document.querySelector('.navigation');
+
+menuItems.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    let part = evt.target.dataset.scroll || evt.target.parentNode.dataset.scroll;
+    if (part && !isScrolled)
+        slowScrollTo(part)
+});
+
+function slowScrollTo(part) {
+    let target = document.getElementById(part).offsetTop;
+    isScrolled = true;
+    if (window.pageYOffset > target) {
+        window.scrollTo(0, window.pageYOffset - 20);
+        if (window.pageYOffset < target)
+            window.scrollTo(0, target)
+    }
+    else if (window.pageYOffset < target) {
+        window.scrollTo(0, window.pageYOffset + 20);
+        if (window.pageYOffset > target)
+            window.scrollTo(0, target)
+    }
+    else if (window.pageYOffset == target) {
+        isScrolled = false;
+        return;
+    }
+
+    setTimeout(() => {
+        slowScrollTo(part);
+    }, 5);
+}
 
