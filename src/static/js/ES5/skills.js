@@ -122,7 +122,7 @@ function showShortInfo() {
 
   skillContent += "</div>";
   var priceContent = "\n        <div class=\"price\">\n            <h3>What I want</h3>\n            <p>From <span class=\"dollar\"><b>$1,100</b></span> per month</p>\n            <p><b>40 hours</b> a week</p>\n            <p>Also you can offer your work schedule</p>\n            \n        </div>\n    ";
-  var contactContent = "\n        <footer class='short-info__footer'>\n            <h3>Contacts</h3>\n            <a href=\"mailto:bro171194@gmail.com\">E-mail: <p class=\"link\">bro171194@gmail.com</p></a>\n            <a href=\"https://vk.com/br000000\">Vkontakte: <p class=\"link\">https://vk.com/br000000</p></a>\n            <a href=\"https://t.me/HaZcker\">Telegram: <p class=\"link\">@HaZcker</p></a>\n            <a href=\"https://www.facebook.com/BRO.SB.17\">Facebook: <p class=\"link\">https://www.facebook.com/BRO.SB.17</p> <p class=\"addition\">(I rarely go there. Better write to the mail or VK)</p></a>\n        </footer>\n    ";
+  var contactContent = "\n        <footer class='short-info__footer'>\n            <h3>Contacts</h3>\n            <a href=\"mailto:bro171194@gmail.com\" target=\"_blank\">E-mail: <p class=\"link\">bro171194@gmail.com</p></a>\n            <a href=\"https://vk.com/br000000\" target=\"_blank\">Vkontakte: <p class=\"link\">https://vk.com/br000000</p></a>\n            <a href=\"https://t.me/HaZcker\" target=\"_blank\">Telegram: <p class=\"link\">@HaZcker</p></a>\n            <a href=\"https://www.facebook.com/BRO.SB.17\" target=\"_blank\">Facebook: <p class=\"link\">https://www.facebook.com/BRO.SB.17</p> <p class=\"addition\">(I rarely go there. Better write to the mail or VK)</p></a>\n        </footer>\n    ";
   content += skillContent;
   content += priceContent;
   content += contactContent;
@@ -136,6 +136,7 @@ function showShortInfo() {
     if (canBeClose) {
       shortInfo.className += ' flip-out-ver-right';
       modal.classList.remove('scale-in-center');
+      document.body.style.overflow = 'auto';
       setTimeout(function () {
         shortInfo.className = 'short-info';
         modal.style.display = 'none';
@@ -149,6 +150,8 @@ document.querySelector('.photo').addEventListener('click', openModal);
 document.getElementById('contactMe').addEventListener('click', openModal);
 
 function openModal() {
+  document.body.style.overflow = 'hidden';
+  console.log(document.body.style.overflow);
   modal.className = 'scale-in-center';
   modal.style.display = 'flex';
 }
