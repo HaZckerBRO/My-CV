@@ -92,7 +92,7 @@ function showShortInfo() {
     let priceContent = `
         <div class="price">
             <h3>What I want</h3>
-            <p>From <span class="dollar"><b>$1,100</b></span> per month</p>
+            <p>From <span class="dollar"><b>$1,200</b></span> a month (netto)</p>
             <p><b>40 hours</b> a week</p>
             <p>Also you can offer your work schedule</p>
             
