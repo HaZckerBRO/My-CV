@@ -30,7 +30,7 @@ var skillsList = [{
   bcgColor: "#FFFF00"
 }, {
   title: "React",
-  percent: 20,
+  percent: 55,
   imageSrc: "images/skills/React.png",
   group: "Frontend",
   color: "#00DBFC",
@@ -43,8 +43,8 @@ var skillsList = [{
   color: "#000000",
   bcgColor: "#00C902"
 }, {
-  title: "GitHub",
-  percent: 70,
+  title: "Git",
+  percent: 55,
   imageSrc: "images/skills/GitHub.png",
   group: "Instruments",
   color: "#ffffff",
