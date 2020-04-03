@@ -14,6 +14,7 @@ var part3_blocks = part3.querySelector('.blocks');
 var activeNav = document.getElementById('active');
 var divCounter = 0;
 var windowHeight = document.documentElement.clientHeight;
+document.doIt = true;
 document.addEventListener("DOMContentLoaded", function () {
   part1.style.minHeight = windowHeight + "px";
   part2.style.minHeight = windowHeight + "px";
@@ -42,6 +43,7 @@ var slowShowDiv = function slowShowDiv() {
 var divTimer = setInterval(slowShowDiv, 1000);
 
 function initializeLevelSkill() {
+  document.doIt = false;
   var levels = document.querySelectorAll('.level');
 
   for (var i = 0; i < levels.length; i++) {
@@ -70,6 +72,7 @@ function changeWidthBar(elem, width, lvl) {
 
 window.addEventListener("scroll", function (evt) {
   if (window.pageYOffset >= 500 && document.doIt) {
+    document.doIt = false;
     setTimeout(initializeLevelSkill, 250);
   }
 

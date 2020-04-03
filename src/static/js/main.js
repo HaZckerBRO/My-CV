@@ -13,6 +13,7 @@ const activeNav = document.getElementById('active');
 
 let divCounter = 0;
 let windowHeight = document.documentElement.clientHeight;
+document.doIt = true
 
 document.addEventListener("DOMContentLoaded", () => {
     part1.style.minHeight = windowHeight+"px";
@@ -45,6 +46,7 @@ let slowShowDiv = function () {
 let divTimer = setInterval(slowShowDiv, 1000);
 
 function initializeLevelSkill() {
+    document.doIt = false;
     let levels = document.querySelectorAll('.level');
     for (let i = 0; i < levels.length; i++) {
         let item = levels[i].querySelector('.level-bar');
@@ -73,6 +75,7 @@ function changeWidthBar(elem, width, lvl) {
 
 window.addEventListener("scroll", (evt)=>{
     if (window.pageYOffset >= 500 && document.doIt) {
+        document.doIt = false;
         setTimeout(initializeLevelSkill, 250);
     }
     changeActiveNavPosition();
