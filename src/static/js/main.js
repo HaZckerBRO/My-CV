@@ -10,11 +10,9 @@ const part3 = document.getElementById('part-3');
 const part2_blocks = document.querySelector('.skills__items');
 const part3_blocks = part3.querySelector('.blocks');
 const activeNav = document.getElementById('active');
-let isScrolled = false;
 
 let divCounter = 0;
 let windowHeight = document.documentElement.clientHeight;
-document.doIt = true
 
 document.addEventListener("DOMContentLoaded", () => {
     part1.style.minHeight = windowHeight+"px";
@@ -47,7 +45,6 @@ let slowShowDiv = function () {
 let divTimer = setInterval(slowShowDiv, 1000);
 
 function initializeLevelSkill() {
-    document.doIt = false;
     let levels = document.querySelectorAll('.level');
     for (let i = 0; i < levels.length; i++) {
         let item = levels[i].querySelector('.level-bar');
@@ -76,7 +73,6 @@ function changeWidthBar(elem, width, lvl) {
 
 window.addEventListener("scroll", (evt)=>{
     if (window.pageYOffset >= 500 && document.doIt) {
-        document.doIt = false;
         setTimeout(initializeLevelSkill, 250);
     }
     changeActiveNavPosition();
@@ -98,30 +94,16 @@ let menuItems = document.querySelector('.navigation');
 menuItems.addEventListener('click', (evt) => {
     evt.preventDefault();
     let part = evt.target.dataset.scroll || evt.target.parentNode.dataset.scroll;
-    if (part && !isScrolled)
-        slowScrollTo(part)
+    if (part){
+    	let target = document.getElementById(part);
+    	target.scrollIntoView({
+	      behavior: 'smooth',
+	      block: 'start'
+	    })
+    }
 });
 
-function slowScrollTo(part) {
-    let target = document.getElementById(part).offsetTop;
-    isScrolled = true;
-    if (window.pageYOffset > target) {
-        window.scrollTo(0, window.pageYOffset - 20);
-        if (window.pageYOffset < target)
-            window.scrollTo(0, target)
-    }
-    else if (window.pageYOffset < target) {
-        window.scrollTo(0, window.pageYOffset + 20);
-        if (window.pageYOffset > target)
-            window.scrollTo(0, target)
-    }
-    else if (window.pageYOffset == target) {
-        isScrolled = false;
-        return;
-    }
 
-    setTimeout(() => {
-        slowScrollTo(part);
-    }, 5);
-}
+
+
 

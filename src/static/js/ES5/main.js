@@ -12,10 +12,8 @@ var part3 = document.getElementById('part-3');
 var part2_blocks = document.querySelector('.skills__items');
 var part3_blocks = part3.querySelector('.blocks');
 var activeNav = document.getElementById('active');
-var isScrolled = false;
 var divCounter = 0;
 var windowHeight = document.documentElement.clientHeight;
-document.doIt = true;
 document.addEventListener("DOMContentLoaded", function () {
   part1.style.minHeight = windowHeight + "px";
   part2.style.minHeight = windowHeight + "px";
@@ -44,7 +42,6 @@ var slowShowDiv = function slowShowDiv() {
 var divTimer = setInterval(slowShowDiv, 1000);
 
 function initializeLevelSkill() {
-  document.doIt = false;
   var levels = document.querySelectorAll('.level');
 
   for (var i = 0; i < levels.length; i++) {
@@ -73,7 +70,6 @@ function changeWidthBar(elem, width, lvl) {
 
 window.addEventListener("scroll", function (evt) {
   if (window.pageYOffset >= 500 && document.doIt) {
-    document.doIt = false;
     setTimeout(initializeLevelSkill, 250);
   }
 
@@ -94,25 +90,12 @@ var menuItems = document.querySelector('.navigation');
 menuItems.addEventListener('click', function (evt) {
   evt.preventDefault();
   var part = evt.target.dataset.scroll || evt.target.parentNode.dataset.scroll;
-  if (part && !isScrolled) slowScrollTo(part);
-});
 
-function slowScrollTo(part) {
-  var target = document.getElementById(part).offsetTop;
-  isScrolled = true;
-
-  if (window.pageYOffset > target) {
-    window.scrollTo(0, window.pageYOffset - 20);
-    if (window.pageYOffset < target) window.scrollTo(0, target);
-  } else if (window.pageYOffset < target) {
-    window.scrollTo(0, window.pageYOffset + 20);
-    if (window.pageYOffset > target) window.scrollTo(0, target);
-  } else if (window.pageYOffset == target) {
-    isScrolled = false;
-    return;
+  if (part) {
+    var target = document.getElementById(part);
+    target.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
   }
-
-  setTimeout(function () {
-    slowScrollTo(part);
-  }, 5);
-}
+});

@@ -151,7 +151,6 @@ document.getElementById('contactMe').addEventListener('click', openModal);
 
 function openModal() {
   document.body.style.overflow = 'hidden';
-  console.log(document.body.style.overflow);
   modal.className = 'scale-in-center';
   modal.style.display = 'flex';
 }
