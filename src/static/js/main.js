@@ -48,12 +48,11 @@ let divTimer = setInterval(slowShowDiv, 1000);
 function initializeLevelSkill() {
     document.doIt = false;
     let levels = document.querySelectorAll('.level');
-    for (let i = 0; i < levels.length; i++) {
-        let item = levels[i].querySelector('.level-bar');
-        let lvl = item.dataset.level;
-        item.style.width = lvl + '%';
-        let width = levels[i].style.width;
-        changeWidthBar(item, width, lvl)
+    for (let elem of levels){
+    	let item = elem.querySelector('.level-bar'),
+			lvl = item.dataset.level;
+		item.style.width = lvl + '%';
+    	changeWidthBar(item, elem.style.width, lvl);
     }
 }
 

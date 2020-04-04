@@ -1,13 +1,13 @@
 let skillsList = [
-    { title: "HTML 5",          percent: 90,    imageSrc: "images/skills/HTML5.png",        group: "Frontend",      color: "#ffffff",   bcgColor: "#F16529"},
-    { title: "CSS3",            percent: 90,    imageSrc: "images/skills/CSS3.png",         group: "Frontend",      color: "#ffffff",   bcgColor: "#168dc9"},
-    { title: "JavaScript",      percent: 70,    imageSrc: "images/skills/JavaScript.png",   group: "Frontend",      color: "#ffffff",   bcgColor: "#EB5E00"},
-    { title: "ES6",             percent: 80,    imageSrc: "images/skills/ES6.png",          group: "Frontend",      color: "#000000",   bcgColor: "#FFFF00"},
-    { title: "React",           percent: 55,    imageSrc: "images/skills/React.png",        group: "Frontend",      color: "#00DBFC",   bcgColor: "#292929"},
-    { title: "Python Django",   percent: 35,    imageSrc: "images/skills/Python.png",       group: "Backend",       color: "#000000",   bcgColor: "#00C902"},
-    { title: "Git",             percent: 55,    imageSrc: "images/skills/GitHub.png",       group: "Instruments",   color: "#ffffff",   bcgColor: "#4B4B4B"},
-    { title: "Gulp",            percent: 70,    imageSrc: "images/skills/Gulp.png",         group: "Instruments",   color: "#ffffff",   bcgColor: "#F34945"},
-    { title: "Sass",            percent: 80,    imageSrc: "images/skills/Sass.png",         group: "Instruments",   color: "#ffffff",   bcgColor: "#CC6699"},
+    { title: "HTML 5",          percent: 90,    imageSrc: "build/images/skills/HTML5.png",        group: "Frontend",      color: "#ffffff",   bcgColor: "#F16529"},
+    { title: "CSS3",            percent: 90,    imageSrc: "build/images/skills/CSS3.png",         group: "Frontend",      color: "#ffffff",   bcgColor: "#168dc9"},
+    { title: "JavaScript",      percent: 70,    imageSrc: "build/images/skills/JavaScript.png",   group: "Frontend",      color: "#ffffff",   bcgColor: "#EB5E00"},
+    { title: "ES6",             percent: 80,    imageSrc: "build/images/skills/ES6.png",          group: "Frontend",      color: "#000000",   bcgColor: "#FFFF00"},
+    { title: "React",           percent: 55,    imageSrc: "build/images/skills/React.png",        group: "Frontend",      color: "#00DBFC",   bcgColor: "#292929"},
+    { title: "Python Django",   percent: 35,    imageSrc: "build/images/skills/Python.png",       group: "Backend",       color: "#000000",   bcgColor: "#00C902"},
+    { title: "Git",             percent: 55,    imageSrc: "build/images/skills/GitHub.png",       group: "Instruments",   color: "#ffffff",   bcgColor: "#4B4B4B"},
+    { title: "Gulp",            percent: 70,    imageSrc: "build/images/skills/Gulp.png",         group: "Instruments",   color: "#ffffff",   bcgColor: "#F34945"},
+    { title: "Sass",            percent: 80,    imageSrc: "build/images/skills/Sass.png",         group: "Instruments",   color: "#ffffff",   bcgColor: "#CC6699"},
 ];
 
 let isSkillsCreated = false;
@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
         frontendGroup = skills.querySelector('.frontend'),
         backendGroup = skills.querySelector('.backend'),
         otherGroup = skills.querySelector('.other');
-
     skillsList.forEach((skill) => {
         let itemGroup = skill.group;
         let item = null;
@@ -51,14 +50,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function createItems(obj) {
+    const { imageSrc: image, title, color, bcgColor, percent } = obj;
     let item = `
         <div class="skills__item">
-            <img src="${obj.imageSrc}" alt="${obj.title}" class="image">
+            <img src="${image}" alt="${title}" class="image">
             <div class="skills__level-wrapper">
-                <p class="level-title">${obj.title}</p>
+                <p class="level-title">${title}</p>
                 <div class="level">
-                    <div class="percent" style="color: ${obj.color}"></div>
-                    <div class="level-bar" style="background-color: ${obj.bcgColor};" data-level="${obj.percent}"></div>
+                    <div class="percent" style="color: ${color}"></div>
+                    <div class="level-bar" style="background-color: ${bcgColor};" data-level="${percent}"></div>
                 </div>
             </div>
         </div>
@@ -79,14 +79,16 @@ function showShortInfo() {
         <div class="my-skills">
     `;
 
-    for (let i = 0; i < skillsList.length; i++) {
+    skillsList.map( elem => {
         skillContent += `
             <div class="skill">
-                <p class="title">${skillsList[i].title}</p>
-                <p class="percent">${skillsList[i].percent}%</p>
+                <p class="title">${elem.title}</p>
+                <p class="percent">${elem.percent}%</p>
             </div>
         `;
-    }
+    });
+
+
     skillContent += "</div>"
 
     let priceContent = `

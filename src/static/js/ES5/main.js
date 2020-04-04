@@ -45,13 +45,31 @@ var divTimer = setInterval(slowShowDiv, 1000);
 function initializeLevelSkill() {
   document.doIt = false;
   var levels = document.querySelectorAll('.level');
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
-  for (var i = 0; i < levels.length; i++) {
-    var item = levels[i].querySelector('.level-bar');
-    var lvl = item.dataset.level;
-    item.style.width = lvl + '%';
-    var width = levels[i].style.width;
-    changeWidthBar(item, width, lvl);
+  try {
+    for (var _iterator = levels[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var elem = _step.value;
+      var item = elem.querySelector('.level-bar'),
+          lvl = item.dataset.level;
+      item.style.width = lvl + '%';
+      changeWidthBar(item, elem.style.width, lvl);
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+        _iterator["return"]();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
   }
 }
 
