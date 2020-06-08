@@ -1,10 +1,9 @@
-.left-sidebar
+.sidebar
 	position: fixed
 	width: 100px
-	top: 0
-	bottom: 0
+	height: 100vh
 	background-color: rgba(0,0,0, 0.7)
-	opacity: 0
+	opacity: 1
 	transition: opacity .5s ease-in-out
 	border-right: 1px solid black
 	display: flex
@@ -16,7 +15,6 @@
 	@media only screen and (max-width: 550px)
 		display: none
 
-
 	.navigation
 		display: flex
 		position: relative
@@ -26,6 +24,10 @@
 		align-items: center
 		align-content: space-between
 		flex-wrap: wrap
+		@media only screen and (max-width: 550px)
+			height: 100px
+			flex-direction: row
+			justify-content: space-around
 		.item
 			position: relative
 			width: 100%
@@ -33,6 +35,10 @@
 			padding: 15px 0 25px 0
 			margin: 20px 0
 			cursor: pointer
+			@media only screen and (max-width: 550px)
+				width: auto
+				padding: 0
+				margin: 0
 			&:first-child
 				margin-top: 0
 			&:last-of-type
@@ -57,3 +63,12 @@
 			right: 0
 			width: 5px
 			background-color: aqua
+			transition: top .5s linear
+			@media only screen and (max-width: 550px)
+				display: none
+			&.part1
+				top: 0
+			&.part2
+				top: 39%
+			&.part3
+				top: 75%

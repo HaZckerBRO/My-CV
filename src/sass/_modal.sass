@@ -1,43 +1,26 @@
-@import 'header'
-@import 'left-sidebar'
-@import "skills"
-@import "animations"
-@import "targets"
-
-body
-	background-color: black
-	font-family: 'Roboto', sans-serif
-	color: white
-	height: 100%
-	overflow: auto
-
-html
-	height: 100%
-
-#part-1,
-#part-2,
-#part-3
-	min-height: 1000px
-
 #modal
-	display: none
+	display: flex
 	position: fixed
 	top: 0
 	left: 0
 	bottom: 0
 	right: 0
+	transform: scale(0)
 	color: black
 	background-color: rgba(0,0,0, 0.8)
 	z-index: 1000
 	overflow-x: hidden
 	overflow-y: auto
+	transition: transform .5s ease-in-out
+	&.showed
+		transform: scale(1)
 
-	h3
+	.title
 		text-align: center
 		font-size: 26px
 		text-transform: uppercase
 		font-weight: bold
-		font-family: 'Bowlby One SC', sans-serif
+		font-family: 'Bowlby One SC', 'Russo One', sans-serif
 	.short-info
 		margin: auto
 		position: relative
@@ -73,18 +56,19 @@ html
 	.skill
 		color: black
 		display: flex
-		justify-content: space-between
+		justify-content: center
+		text-align: center
 		align-items: center
 		flex-direction: row
 		font-weight: bold
-		padding: 5px 10px
-		width: 40%
+		padding: 10px
 		margin: 5px 0
 		.percent
 			color: #00DBFC
 		p
 			margin: 0 20px
-	.price
+	.my-skills--other,
+	.my-skills--experience
 		background-color: #292929
 		position: relative
 		min-width: 320px
@@ -95,11 +79,23 @@ html
 		font-family: 'PTSans', sans-serif
 		padding: 15px 5% 20px 10px
 		margin-bottom: 10px
-		b
+		.title
+			margin-bottom: 20px
+		p
+			display: inline-block
+			padding: 5px 15px
 			color: #00DBFC
 		h3
 			color: white
 			font-family: 'PTSans', sans-serif
+
+	.my-skills--experience
+		color: #00DBFC
+		margin-bottom: 0
+		.item
+			padding: 15px
+			color: #00DBFC
+
 
 #modal-close
 	padding: 10px 20px
@@ -114,5 +110,4 @@ html
 	cursor: pointer
 	&:hover
 		background-color: darken(#343a40, 10%)
-
 

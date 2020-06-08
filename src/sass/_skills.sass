@@ -1,37 +1,47 @@
+#part-2
+   direction: flex
+   justify-content: space-between
+   width: 33.3333333%
+   min-height: 100vh
+
 .skills__title
    font-size: 48px
-   font-family: 'Bowlby One SC', sans-serif
-   margin-bottom: 30px
-   font-weight: normal
+   padding: 15px
+   font-weight: 800
+   font-family: 'Bowlby One SC', 'Russo One', sans-serif
    text-align: center
    text-transform: uppercase
-   color: black
-#part-2
-   background-color: white
-   transition: opacity 0.3s ease-in-out
-   opacity: 0
+   color: #eaff3a
 
 #skills
    background-color: rgba(255,255,255, 1)
-   padding: 20px 0
+   padding: 30px 10px
    color: black
-   font-family: 'PT Sans', sans-serif
+   flex-grow: 1
+   border-top-left-radius: 5px
    font-size: 22px
-   min-height: 1000px
-
-   .other-knowledge
+   
+   .other-knowledges
+   .other-knowledge--experience,
+   .other-knowledge--other
       display: flex
       flex-direction: row
       justify-content: center
       flex-wrap: wrap
       color: #5e5e5e !important
       padding: 30px 50px
-      max-height: 400px
+      width: 50%
 
       @media only screen and (max-width: 900px)
          max-height: none
-
+      
+      .title
+         text-transform: uppercase
+         text-align: center
+         width: 100%
+         margin: 20px 0
       .item
+         align-content: center
          margin: 5px 25px
          display: flex
          flex-wrap: wrap
@@ -46,6 +56,14 @@
          color: red
       .status--string
          color: darkorange
+   .other-knowledges
+      display: flex
+      justify-content: space-around
+      flex-direction: row
+      width: 100%
+      @media only screen and (max-width: 550px)
+         flex-direction: column
+         align-items: center
    .skills__items
       display: flex
       flex-wrap: wrap
@@ -53,16 +71,29 @@
       align-content: center
       @media only screen and (max-width: 550px)
          display: block
+         text-align: center
          margin: 0 5px
+
+      .item
+         display: inline-block
+         text-align: center
+         padding: 15px
+         text-transform: uppercase
+         font-size: 14px
+         img
+            width: 64px
+      .title
+         margin-top: 3px
 
    .skills__group
       display: block
       position: relative
-      border: 1px solid black
+      border: 2px outset #cacaca
       border-radius: 10px
       padding: 30px 10px 10px 10px
       min-width: 520px
       margin-bottom: 35px
+      margin-right: 20px
       @media only screen and (max-width: 650px)
          min-width: 320px
          padding: 25px 5px 5px 5px
@@ -74,7 +105,6 @@
          padding: 10px
          font-size: 22px
          text-transform: uppercase
-         font-family: Roboto
          font-weight: bold
          height: 30px
          top: -25px
@@ -82,52 +112,3 @@
          text-align: center
          background-color: white
          color: gray
-
-   .skills__item
-      display: flex
-      flex-direction: row
-      width: 100%
-      justify-content: space-between
-      align-items: center
-      margin-bottom: 20px
-      @media only screen and (max-width: 450px)
-         display: block
-         text-align: center
-   .image
-      width: 64px
-      @media only screen and (max-width: 450px)
-         margin-bottom: 15px
-   .skills__level-wrapper
-      position: relative
-      margin: 0 15px
-      flex-grow: 1
-   .level-title
-      position: absolute
-      top: -20px
-      font-size: 16px
-      font-weight: bold
-      color: gray
-      left: 0
-      right: 0
-      text-align: center
-      z-index: 2
-   .level
-      position: relative
-      border: 1px solid gray
-      height: 30px
-      @media only screen and (max-width: 650px)
-         min-width: 280px
-      .percent
-         position: absolute
-         z-index: 10
-         width: 100%
-         padding-top: 5px
-         text-align: center
-         font-size: 16px
-         font-weight: bold
-         color: gray
-   .level-bar
-      position: absolute
-      background-color: gold
-      height: 28px
-      width: 0

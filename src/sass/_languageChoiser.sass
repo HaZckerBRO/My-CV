@@ -1,0 +1,77 @@
+#languageChoiser
+	position: fixed
+	display: flex
+	top: 100%
+	bottom: 0
+	right: 100%
+	left: 0
+	z-index: 999
+	transform: scale(0)
+	opacity: 0
+	background: #000 url("../img/night city.jpg") no-repeat
+	transition: opacity .5s ease-in-out, right .5s ease-in-out, transform .5s ease-in-out, top .5s ease-in-out
+	&.showed
+		opacity: 1
+		bottom: 0
+		left: 0
+		right: 0
+		top: 0
+		transform: scale(1)
+
+	.modal
+		position: relative
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		align-content: center
+		width: 320px
+		height: 320px
+		color: black
+		font-weight: 500
+		margin: auto
+		text-transform: uppercase
+		overflow: hidden
+		border: 4px solid white
+		background: rgba(255,255,255, .5)
+	.flags
+		display: flex
+		flex-direction: row
+		flex-wrap: nowrap
+		position: relative
+		margin: 20px auto 10px auto
+		position: relative
+		width: 300%
+		transition: transform 0.4s ease-out
+		div
+			display: inline-block
+			text-align: center
+			width: 100%
+		img
+			width: 128px
+		&.ru
+			transform: translateX(-66.6666666%)
+			opacity: 1
+		&.en
+			transform: translateX(-33.3333333%)
+			opacity: 1
+
+		.smile
+			width: 64px
+			height: 64px
+			filter: constrast(0)
+		
+	.languages
+		display: flex
+		flex-direction: row
+		justify-content: space-around
+		align-items: center
+		div
+			cursor: pointer
+			width: 50%
+			text-align: center
+			padding: 15px
+			transition: all ease .3s
+			&:hover
+				color: white
+				transform: scaleX(1.1)

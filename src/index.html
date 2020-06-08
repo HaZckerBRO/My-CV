@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.7.0/bluebird.min.js"></script>
+	<title>Rodion</title>
+</head>
+<body>
+	<div id="languageChoiser" class="showed" style="display: none;">
+		<div class="modal">
+			<div class="flags">
+				<div><img class='smile' src="img/flags/smile.png" alt="smile" height="128px"></div>
+				<div><img src="img/flags/english.png" alt="flag-en"></div>
+				<div><img src="img/flags/russian.png" alt="flag-ru"></div>
+			</div>
+			<div class="languages">
+				<div data-language-choiser='en'>English</div>
+				<div data-language-choiser='ru'>Русский</div>
+			</div>
+		</div>
+	</div>
+	// to discard problems with IE
+	
+	<aside class="sidebar">
+		<nav class="navigation">
+			<div class="item" data-scroll="part1">
+				<img src="/img/home.png" alt="Home">
+			</div>
+			<div class="item" data-scroll="part2">
+				<img src="/img/skills.png" alt="My skills">
+			</div>
+			<div class="item" data-scroll="part3">
+				<img src="/img/target.png" alt="My targets">
+			</div>
+			<span id="active"></span>
+		</nav>
+	</aside>
+	
+	<div class="wrapper">
+		<section id="part-1">
+			<div class="header__introduction" id="home">
+				<div class="photo invisible">
+					<img class="photo__image" src="img/myPhoto.png">
+				</div>
+				<div class="hello invisible">
+					<h1>Hello! My name is</h1>
+					<span class="name">Rodion</span> <span class="surname">Boyko</span>
+				</div>
+			</div>
+			<div class="about-me">
+				<div class="start-text">
+					<p>I am a <b>Frontend</b> Developer</p>
+					<p>And I am ready for work and interesting projects</p>
+				</div>
+
+				<div class="middle-text">
+					<p>To quickly view a short information, <b>click on the photo</b></p>
+				</div>
+
+				<div class="end-text">
+					<p>Or scroll further </p>
+					<p>and perhaps <b>we will cooperate</b></p>
+				</div>
+			</div>
+		</section>
+		<script>
+			document.querySelectorAll('#languageChoiser').forEach(function (item){
+				item.style.display = 'flex';
+				document.querySelector('.wrapper').classList.add('nanoscale');
+			})
+		</script>
+		<section id="part-2">
+			<h2 class="skills__title">My skills</h2>
+			<div id="skills">
+				<div class="skills__items">
+					<div class="skills__group frontend" data-group-title="Frontend" style="max-width: 600px">
+						<div class="item">
+							<img src="img/skills/HTML5.png" alt="HTML5">
+							<p class="title">Html5</p>
+						</div>
+						<div class="item">
+							<img src="img/skills/CSS3.png" alt="CSS3">
+							<p class="title">Css3</p>
+						</div>
+						<div class="item">
+							<img src="img/skills/JavaScript.png" alt="JavaScript">
+							<p class="title">JavaScript</p>
+						</div>
+						<div class="item">
+							<img src="img/skills/ES6.png" alt="ES6">
+							<p class="title">ES6</p>
+						</div>
+						<div class="item">
+							<img src="img/skills/React.png" alt="React">
+							<p class="title">React JS</p>
+						</div>
+						<div class="item">
+							<img src="img/skills/Redux.png" alt="Redux">
+							<p class="title">Redux</p>
+						</div>
+						<div class="item">
+							<img src="img/skills/Vue.png" alt="Vue">
+							<p class="title">Vue</p>
+						</div>
+					</div>
+					<div class="skills__group backend" data-group-title="Backend">
+						<div class="item">
+							<img src="img/skills/Python.png" alt="Python Django">
+							<p class="title">Python Django</p>
+						</div>
+						<!-- <div class="item">
+							<img src="img/skills/Node.png" alt="Node js">
+							<p class="title">Node js</p>
+						</div> -->
+					</div>
+					<div class="skills__group other" data-group-title="Instruments and etc">
+						<div class="item">
+							<img src="img/skills/GitHub.png" alt="Git">
+							<p class="title">Git</p>
+						</div>
+						<div class="item">
+							<img src="img/skills/Gulp.png" alt="Gulp">
+							<p class="title">Gulp</p>
+						</div>
+						<div class="item">
+							<img src="img/skills/Sass.png" alt="Sass">
+							<p class="title">Sass</p>
+						</div>
+					</div>
+				</div>
+				<div class="other-knowledges">
+					<div class="other-knowledge--experience">
+						<h3 class="title">Have experience</h3>
+						<span class="item">Bootstrap</span>
+						<span class="item">JQuery</span>
+						<span class="item">NodeJS</span>
+						<span class="item">TypeScript</span>
+						<span class="item">Webpack</span>
+						<span class="item">Material Design</span>
+					</div>
+					<div class="other-knowledge--other">
+						<h3 class="title">Other skill</h3>
+						<span class="item">Cross-browser layout</span>
+						<span class="item">Adaptive layout</span>
+						<span class="item">Rubber layout</span>
+						<span class="item">BEM naming</span>
+						<span class="item">English language (reading and writing)</span>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="part-3">
+			<h2 id="my-targets">My targets</h2>
+			<div class="blocks">
+				<div class="block">
+					<h3 class="title--conditions">Conditions</h3>
+					<ul class="targets targets--now">
+						<li class="item">Remote work</li>
+						<li class="item">Full time</li>
+						<li class="item">Design work</li>
+						<li class="item">Partial employment</li>
+					</ul>
+				</div>
+				<div class="block portfolio">
+					<h3 class="title--portfolio">Portfolio</h3>
+					<div class="portfolio__images">
+						<a href="img/portfolio/Portfolio_1.png" target="_blank"><img src="img/portfolio/bag.png" alt=""></a>
+						<a href="img/portfolio/Portfolio_2.png" target="_blank"><img src="img/portfolio/bag.png" alt=""></a>
+						<a href="img/portfolio/Portfolio_3.png" target="_blank"><img src="img/portfolio/bag.png" alt=""></a>
+						<a href="img/portfolio/Portfolio_4.png" target="_blank"><img src="img/portfolio/bag.png" alt=""></a>
+					</div>
+				</div>
+			</div>
+			<button id="contactMe" class="rotate-colors">contact</button>
+		</section>
+	</div>
+
+
+	<div id="modal">
+		<div class="short-info">
+			<h3 class="title">Skills</h3>
+			<div class="my-skills">
+				<div class="skill">HTML 5</div>
+				<div class="skill">CSS3</div>
+				<div class="skill">JavaScript</div>
+				<div class="skill">ES6</div>
+				<div class="skill">React</div>
+				<div class="skill">Python Django</div>
+				<div class="skill">Git</div>
+				<div class="skill">Gulp</div>
+				<div class="skill">Sass</div>
+			</div>
+			<div class="my-skills--experience">
+				<h3 class="title">Have experience</h3>
+				<span class="item">Bootstrap</span>
+				<span class="item">JQuery</span>
+				<span class="item">NodeJS</span>
+				<span class="item">TypeScript</span>
+				<span class="item">Webpack</span>
+				<span class="item">Material Design</span>
+			</div>
+			<div class="my-skills--other">
+				<h3 class="title">Other skill</h3>
+				<p>Cross-browser layout</p>
+				<p>Adaptive layout</p>
+				<p>Rubber layout</p>
+				<p>BEM naming</p>
+				<p>English language (reading and writing)</p>
+			</div>
+
+			<footer class="short-info__footer">
+				<h3 class="title">Contacts</h3>
+				<a href="mailto:bro171194@gmail.com" target="_blank">E-mail: <p class="link">bro171194@gmail.com</p></a>
+				<a href="https://vk.com/br000000" target="_blank">Vkontakte: <p class="link">https://vk.com/br000000</p></a>
+				<a href="https://t.me/HaZcker" target="_blank">Telegram: <p class="link">@HaZcker</p></a>
+				<a href="https://www.facebook.com/BRO.SB.17" target="_blank">Facebook: <p class="link">https://www.facebook.com/BRO.SB.17</p> <p class="addition" style="display: none">(I rarely go there. Better write to the mail or VK)</p></a>
+			</footer>
+			<button type="button" id="modal-close">Close</button>
+		</div>
+	</div>
+
+	<div id="background"></div>
+	
+
+	<script src="js/main.min.js"></script>
+	<script>
+		
+	</script>
+</body>
+</html>

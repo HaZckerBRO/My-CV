@@ -1,30 +1,36 @@
-*
-	box-sizing: border-box
-	margin: 0
-	padding: 0
 
-.wrapper
-	padding-left: 100px
-	overflow-x: hidden
-	@media only screen and (max-width: 550px)
-		padding-left: 0
 
 #part-1
+	background-color: rgba(0, 0, 0, 0.7)
+
+#part-1,
+#part-2
+	position: relative
+	left: 0
+	right: 100px
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	@media screen and (orientation: portrait)
+		justify-content: flex-start
+
+
 	.header__introduction
 		display: flex
 		justify-content: space-around
 		align-items: flex-start
 		flex-wrap: wrap
+		min-height: 50vh
 
 	.photo
 		width: 300px
 		height: 300px
 		margin: 50px 50px 50px 100px
-		border-radius: 50%
 		z-index: 500
 		filter: grayscale(0.3)
 		border: 2px  solid darkgray
 		transition: border-color .3s linear
+		overflow: hidden
 		&:hover
 			border-color: yellow
 		@media only screen and (max-width: 550px)
@@ -33,14 +39,9 @@
 			margin: 20px
 
 	.photo__image
-		position: absolute
-		top: 0
-		left: 0
-		right: 0
-		bottom: 0
-		background: #000 url('../images/myPhoto.png') no-repeat 55% 50%
-		background-size: 100%
-		border-radius: 50%
+		position: relative
+		width: 100%
+		top: -1.5em
 		filter: grayscale(1)
 
 	.hello
@@ -51,7 +52,6 @@
 		padding: 10px
 		width: 50%
 		min-width: 320px
-		background-color: rgba(0, 0, 0, 0.7)
 		font-size: 24px
 		border-radius: 10px
 		color: white
@@ -67,25 +67,22 @@
 		font-weight: bold
 		font-size: 54px
 		text-transform: uppercase
-		font-family: 'Bowlby One SC', sans-serif
+		font-family: 'Bowlby One SC', 'Russo One', sans-serif
 		color: black
-		text-shadow: 0px 0px 5px white
-
+		text-shadow: 0px 0px 5px #94ebff
+		animation: colorRotate 6s linear infinite
+	.surname
+		display: none
 	.name
 		margin-right: 30px
 
 	.about-me
 		display: flex
-		flex-wrap: wrap
+		min-height: 50vh
 		flex-direction: column
 		justify-content: center
-		position: absolute
-		left: 100px
-		right: 0
-		bottom: 0
 		padding: 50px 50px 50px 100px
 		font-family: 'Roboto', sans-serif
-		background-color: rgba(0,0,0, .7)
 		overflow: hidden
 		font-size: 30px
 		letter-spacing: 2.5px
@@ -98,17 +95,16 @@
 		@media only screen and (max-width: 700px)
 			padding: 20px
 		@media only screen and (max-width: 400px)
-			padding: 5px
+			padding: 5px 15px
 			font-size: 24px
 		div
 			position: relative
 			min-width: 320px
-			width: 40%
+			color: white
+			width: 45%
 			align-self: flex-start
 			margin-bottom: 10px
 			text-transform: uppercase
-			opacity: 0
-			transform: translateX(-1000px)
 			transition: transform .5s linear, opacity .5s ease-in-out
 			b
 				color: red
@@ -124,7 +120,6 @@
 				color: darkorange
 		div:nth-child(3)
 			align-self: flex-end
-			transform: translateX(1000px)
 			b
 				color: lime
 			@media only screen and (max-width: 1440px)
@@ -132,28 +127,6 @@
 		div p:first-letter
 			font-family: 'Yeon Sung', sans-serif
 			font-size: 42px
-.bcg
-	position: fixed
-	top: 0
-	right: 0
-	bottom: 0
-	left: 0
-	opacity: 0
-	overflow: hidden
-	background: #000 url('../images/night city.jpg') no-repeat 90% 40%
-	background-size: 250%
-	z-index: -30
-	transition: opacity .5s ease-in-out, background-position 40s linear
 
-
-
-.motion
-	background-position: 0% 40%
-
-
-
-
-.invisible
-	opacity: 0
-
-
+#part-1
+	display: block
