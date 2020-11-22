@@ -64,19 +64,18 @@ function watch(){
 	gulp.watch('src/sass/**/*.sass', gulp.series('sass'))
 	gulp.watch('src/js/*.js', gulp.series('babel'))
 	gulp.watch('src/js/ES5/*.js', gulp.series('scripts'))
-	// gulp.watch('./*.html').on('change', browserSync.reload)
 	gulp.watch('./src/*.html', gulp.series('transferHTML'))
 }
 
 function images(done){
-	gulp.src('src/img/**/*') //Выберем наши картинки
-        .pipe(imagemin({ //Сожмем их
+	gulp.src('src/img/**/*')
+        .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
             use: [pngquant()],
             interlaced: true
         }))
-        .pipe(gulp.dest('build/img/')) //И бросим в build
+        .pipe(gulp.dest('build/img/'))
         .pipe(browserSync.reload({
 			stream: true
 		}));
@@ -110,7 +109,6 @@ gulp.task('images', images);
 gulp.task('transfer', transfer);
 gulp.task('transferHTML', transferHTML);
 gulp.task('watch', watch);
-// gulp.task('build', gulp.series(clean, transfer, 'babel', gulp.parallel(sass, scripts)))
 gulp.task('build', gulp.series(clean, images, 'transferHTML', 'babel', gulp.parallel(sass, scripts)))
 gulp.task('dev', gulp.series('build', gulp.parallel(watch, serve)))
 	

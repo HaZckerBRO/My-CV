@@ -1,7 +1,86 @@
 "use strict";
 
+var documentLanguage = storageLang();
+
+function storageLang(newLang) {
+  if (newLang) {
+    return window.localStorage.setItem('pageLang', newLang);
+  }
+
+  return window.localStorage.getItem('pageLang') || null;
+}
+
+var translate = {
+  part1: {
+    greeting: {
+      en: 'Hello! My name is',
+      ru: 'Привет! Меня зовут'
+    },
+    name: {
+      en: 'Rodion',
+      ru: 'Родион'
+    },
+    surname: {
+      en: 'Boyko',
+      ru: 'Бойко'
+    },
+    aboutMe: {
+      startText: {
+        en: ['I am a', ' Frontend ', 'Developer', 'Ready for work and interesting projects'],
+        ru: ['Я', ' Frontend ', 'Разработчик', 'Готов к работе, и/или интересным проектам']
+      },
+      middleText: {
+        en: ['To quickly view a short information, ', 'click on the photo'],
+        ru: ['Для просмотра краткой информации', ' кликните на фото']
+      },
+      endText: {
+        en: ['Or scroll further,', ' and perhaps ', 'we will cooperate'],
+        ru: ['Или смотрите страницу полностью', ' и возможно ', 'мы будем сотрудничать']
+      }
+    }
+  },
+  part2: {
+    title: {
+      en: 'My skills',
+      ru: 'Мои навыки'
+    },
+    title_experience: {
+      en: 'Have experience',
+      ru: 'Есть опыт'
+    },
+    title_other: {
+      en: 'Other skill',
+      ru: 'Другие навыки'
+    },
+    knowledge_items: {
+      en: ['Cross-browser layout', 'Adaptive layout', 'Rubber layout', 'BEM naming', 'English language (reading and writing)'],
+      ru: ['Кроссбраузерная вёрстка', 'Адаптивная вёрстка', 'Резиновая вёрстка', 'БЭМ нейминг', 'Английский язык (чтение и письмо)']
+    }
+  },
+  part3: {
+    title: {
+      en: 'Portfolio',
+      ru: 'Портфолио'
+    },
+    title_now: {
+      en: 'Wish',
+      ru: 'Пожелания'
+    },
+    title_future: {
+      en: 'Portfolio',
+      ru: 'Портфолио'
+    },
+    contacts_btn: {
+      en: 'contacts',
+      ru: 'контакты'
+    }
+  },
+  modal_close: {
+    en: 'close',
+    ru: 'закрыть'
+  }
+};
 window.onload = new function () {
-  var documentLanguage = null;
   var wrapper = document.querySelector('.wrapper');
   var langChoiser = document.getElementById('languageChoiser');
   var langItems = langChoiser.querySelectorAll('.languages div');
@@ -13,25 +92,23 @@ window.onload = new function () {
   var background = document.querySelector('#background');
   var part_1 = document.getElementById('part-1');
   var part_2 = document.getElementById('part-2');
-  var part_3 = document.getElementById('part-3');
-  var navigation = document.querySelector('.sidebar');
-  var activeNav = navigation.querySelector('#active');
-  navigation.addEventListener('click', function (evt) {
-    var scroll = evt.target.dataset.scroll || evt.target.parentNode.dataset.scroll;
+  var part_3 = document.getElementById('part-3'); // let navigation = document.querySelector('.sidebar');
+  // let activeNav = navigation.querySelector('#active');
+  // navigation.addEventListener('click', evt => {
+  // 	let scroll = evt.target.dataset.scroll || evt.target.parentNode.dataset.scroll
+  // 	if (scroll) {
+  // 		wrapper.classList.remove('part1');
+  // 		wrapper.classList.remove('part2');
+  // 		wrapper.classList.remove('part3');
+  // 		wrapper.classList.add(scroll);
+  // 		activeNav.classList.remove('part1');
+  // 		activeNav.classList.remove('part2');
+  // 		activeNav.classList.remove('part3');
+  // 		activeNav.classList.add(scroll);
+  // 	}
+  // })
 
-    if (scroll) {
-      wrapper.classList.remove('part1');
-      wrapper.classList.remove('part2');
-      wrapper.classList.remove('part3');
-      wrapper.classList.add(scroll);
-      activeNav.classList.remove('part1');
-      activeNav.classList.remove('part2');
-      activeNav.classList.remove('part3');
-      activeNav.classList.add(scroll);
-    }
-  });
   Array.prototype.slice.call(langItems).forEach(function (item) {
-    console.log(Array.prototype.slice.call(langItems));
     item.addEventListener('mouseenter', function (evt) {
       if (evt.target.dataset.languageChoiser === 'en') {
         flags.classList.remove('ru');
@@ -41,25 +118,35 @@ window.onload = new function () {
         flags.classList.add('ru');
       }
     });
-    item.addEventListener('click', function (evt) {
-      var lang = evt.target.dataset.languageChoiser;
 
-      if (lang) {
-        documentLanguage = lang;
-        setTimeout(function () {
-          translateDocument(documentLanguage);
-        }, 200);
-      }
-
+    if (documentLanguage) {
       wrapper.classList.remove('nanoscale');
-    });
+      hideLangChoiser();
+      translateDocument(documentLanguage);
+    } else {
+      item.addEventListener('click', function (evt) {
+        documentLanguage = evt.target.dataset.languageChoiser || storageLang();
+
+        if (documentLanguage) {
+          storageLang(documentLanguage);
+          setTimeout(function () {
+            translateDocument(documentLanguage);
+          }, 200);
+        }
+
+        wrapper.classList.remove('nanoscale');
+        hideLangChoiser();
+      });
+    }
   });
 
-  function translateDocument(lang) {
-    langChoiser.addEventListener('transitionend', function () {
-      langChoiser.style.display = 'none';
-    });
+  function hideLangChoiser() {
+    langChoiser.style.display = 'none';
     langChoiser.classList.remove('showed');
+  }
+
+  function translateDocument(lang) {
+    langChoiser.addEventListener('transitionend', hideLangChoiser);
     translatePart_1(lang);
     translatePart_2(lang);
     translatePart_3(lang);
@@ -138,12 +225,12 @@ window.onload = new function () {
   }
 
   function translateModal(lang) {
-    var shortInfoBlock = document.querySelector('.short-info'),
-        shortInfoTitle = shortInfoBlock.querySelector('.title'),
-        experienceTitle = shortInfoBlock.querySelector('.my-skills--experience > .title'),
-        otherTitle = shortInfoBlock.querySelector('.my-skills--other > .title'),
-        contactsTitle = shortInfoBlock.querySelector('.short-info__footer > .title'),
-        otherP = shortInfoBlock.querySelectorAll('.my-skills--other > p');
+    var shortInfoBlock = document.querySelector('.short-info');
+    var shortInfoTitle = shortInfoBlock.querySelector('.title');
+    var experienceTitle = shortInfoBlock.querySelector('.my-skills--experience > .title');
+    var otherTitle = shortInfoBlock.querySelector('.my-skills--other > .title');
+    var contactsTitle = shortInfoBlock.querySelector('.short-info__footer > .title');
+    var otherP = shortInfoBlock.querySelectorAll('.my-skills--other > p');
     shortInfoTitle.textContent = translate.part2.title[lang];
     experienceTitle.textContent = translate.part2.title_experience[lang];
     otherTitle.textContent = translate.part2.title_other[lang];
@@ -170,74 +257,4 @@ window.onload = new function () {
     var canBeClose = evt.target == modal && !evt.target.classList.contains('short-info') || evt.target == modalCloseBtn;
     if (canBeClose) shortInfoHandler();
   });
-  var translate = {
-    part1: {
-      greeting: {
-        en: 'Hello! My name is',
-        ru: 'Привет! Меня зовут'
-      },
-      name: {
-        en: 'Rodion',
-        ru: 'Родион'
-      },
-      surname: {
-        en: 'Boyko',
-        ru: 'Бойко'
-      },
-      aboutMe: {
-        startText: {
-          en: ['I am a', ' Frontend ', 'Developer', 'Ready for work and interesting projects'],
-          ru: ['Я', ' Frontend ', 'Разработчик', 'Готов к работе, и/или интересным проектам']
-        },
-        middleText: {
-          en: ['To quickly view a short information, ', 'click on the photo'],
-          ru: ['Для просмотра краткой информации', ' кликните на фото']
-        },
-        endText: {
-          en: ['Or scroll further,', ' and perhaps ', 'we will cooperate'],
-          ru: ['Или смотрите страницу полностью', ' и возможно ', 'мы будем сотрудничать']
-        }
-      }
-    },
-    part2: {
-      title: {
-        en: 'My skills',
-        ru: 'Мои навыки'
-      },
-      title_experience: {
-        en: 'Have experience',
-        ru: 'Есть опыт'
-      },
-      title_other: {
-        en: 'Other skill',
-        ru: 'Другие навыки'
-      },
-      knowledge_items: {
-        en: ['Cross-browser layout', 'Adaptive layout', 'Rubber layout', 'BEM naming', 'English language (reading and writing)'],
-        ru: ['Кроссбраузерная вёрстка', 'Адаптивная вёрстка', 'Резиновая вёрстка', 'БЭМ нейминг', 'Английский язык (чтение и письмо)']
-      }
-    },
-    part3: {
-      title: {
-        en: 'Portfolio',
-        ru: 'Портфолио'
-      },
-      title_now: {
-        en: 'Wish',
-        ru: 'Пожелания'
-      },
-      title_future: {
-        en: 'Portfolio',
-        ru: 'Портфолио'
-      },
-      contacts_btn: {
-        en: 'contacts',
-        ru: 'контакты'
-      }
-    },
-    modal_close: {
-      en: 'close',
-      ru: 'закрыть'
-    }
-  };
 }();

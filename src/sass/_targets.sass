@@ -8,6 +8,7 @@
    position: relative
    @media only screen and (max-width: 500px)
       padding: 20px 50px 80px 50px
+
    h2
       font-size: 48px
       font-family: 'Bowlby One SC', 'Russo One', sans-serif
@@ -21,6 +22,7 @@
       font-size: 36px
       text-transform: uppercase
       font-family: Roboto, sans-serif
+
    .blocks
       display: flex
       justify-content: space-around
@@ -29,6 +31,7 @@
       align-items: center
       margin: 20px 10px 60px 10px
       padding: 10px
+
    .block
       margin: 10px 0
       transform: perspective(500px) rotateY(30deg)
@@ -41,6 +44,7 @@
 
    .block:nth-of-type(2)
       transform: perspective(600px) rotateY(-30deg)
+      
    .targets
       margin: 20px 10px
       &--now
@@ -102,24 +106,22 @@
    a
       position: relative
       display: block
-      transition: transform ease .3s, border-color ease .3s
       border: 3px solid white
       margin: 5px
       &:hover
          border-color: #411dff
+         background-color: white
          z-index: 900
-         transform: scale(1.2) perspective(300px) rotateY(15deg)
       &:hover img
-         transform: translate(0px, 0px) 
          z-index: 900
+         filter: hue-rotate(145deg) contrast(1.5)
    img
       display: block
       position: relative
       filter: grayscale(1)
       transition: transform ease .3s, filter ease .3s
       transform: translate(-10px, 10px)
-      &:hover
-         filter: hue-rotate(145deg)
+         
 
 .title--portfolio
    margin-bottom: 20px
