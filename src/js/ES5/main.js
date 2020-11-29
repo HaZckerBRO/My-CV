@@ -1,6 +1,7 @@
 "use strict";
 
-var documentLanguage = storageLang();
+// let documentLanguage = storageLang();
+var documentLanguage = "ru";
 
 function storageLang(newLang) {
   if (newLang) {
@@ -92,22 +93,7 @@ window.onload = new function () {
   var background = document.querySelector('#background');
   var part_1 = document.getElementById('part-1');
   var part_2 = document.getElementById('part-2');
-  var part_3 = document.getElementById('part-3'); // let navigation = document.querySelector('.sidebar');
-  // let activeNav = navigation.querySelector('#active');
-  // navigation.addEventListener('click', evt => {
-  // 	let scroll = evt.target.dataset.scroll || evt.target.parentNode.dataset.scroll
-  // 	if (scroll) {
-  // 		wrapper.classList.remove('part1');
-  // 		wrapper.classList.remove('part2');
-  // 		wrapper.classList.remove('part3');
-  // 		wrapper.classList.add(scroll);
-  // 		activeNav.classList.remove('part1');
-  // 		activeNav.classList.remove('part2');
-  // 		activeNav.classList.remove('part3');
-  // 		activeNav.classList.add(scroll);
-  // 	}
-  // })
-
+  var part_3 = document.getElementById('part-3');
   Array.prototype.slice.call(langItems).forEach(function (item) {
     item.addEventListener('mouseenter', function (evt) {
       if (evt.target.dataset.languageChoiser === 'en') {
@@ -124,21 +110,24 @@ window.onload = new function () {
       hideLangChoiser();
       translateDocument(documentLanguage);
     } else {
-      item.addEventListener('click', function (evt) {
-        documentLanguage = evt.target.dataset.languageChoiser || storageLang();
-
-        if (documentLanguage) {
-          storageLang(documentLanguage);
-          setTimeout(function () {
-            translateDocument(documentLanguage);
-          }, 200);
-        }
-
-        wrapper.classList.remove('nanoscale');
-        hideLangChoiser();
-      });
+      item.addEventListener('click', langClickHandler);
+      item.addEventListener('touchstart', langClickHandler);
     }
   });
+
+  function langClickHandler(evt) {
+    documentLanguage = evt.target.dataset.languageChoiser || storageLang();
+
+    if (documentLanguage) {
+      storageLang(documentLanguage);
+      setTimeout(function () {
+        translateDocument(documentLanguage);
+      }, 200);
+    }
+
+    wrapper.classList.remove('nanoscale');
+    hideLangChoiser();
+  }
 
   function hideLangChoiser() {
     langChoiser.style.display = 'none';
@@ -147,6 +136,7 @@ window.onload = new function () {
 
   function translateDocument(lang) {
     langChoiser.addEventListener('transitionend', hideLangChoiser);
+    window.scrollTo(0, 0);
     translatePart_1(lang);
     translatePart_2(lang);
     translatePart_3(lang);
@@ -254,7 +244,7 @@ window.onload = new function () {
   photo.addEventListener('click', shortInfoHandler);
   contactsBtn.addEventListener('click', shortInfoHandler);
   modal.addEventListener('click', function (evt) {
-    var canBeClose = evt.target == modal && !evt.target.classList.contains('short-info') || evt.target == modalCloseBtn;
+    var canBeClose = evt.target === modal && !evt.target.classList.contains('short-info') || evt.target === modalCloseBtn;
     if (canBeClose) shortInfoHandler();
   });
 }();

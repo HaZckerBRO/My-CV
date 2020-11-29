@@ -136,7 +136,6 @@
 						<span class="item">Ant Design</span>
 						<span class="item">Material Design</span>
 					</div>
-
 					<div class="other-knowledge--other">
 						<h3 class="title">Other skill</h3>
 						<span class="item">Cross-browser layout</span>
@@ -146,26 +145,13 @@
 						<span class="item">English language (reading and writing)</span>
 					</div>
 				</div>
-
-				<div class="additional-block" style="display: none;">
+				<div class="additional-block">
 					<p class="title">Внимание!</p>
 					<div class="info">
 						<p>Актуальные примеры кода спрашивайте в личных сообщениях (см. контакты)</p>
 						<p>Чистоту кода можно оценить по проектам, ссылки на которые я скину в лс</p>
 					</div>
 				</div>
-
-				<script>
-					// костыль
-					const additional = document.querySelector('.additional-block')
-					const interval = window.setInterval(() => {
-						if (window.localStorage.getItem('pageLang') === 'ru') {
-							additional.style.display = 'flex';
-							window.clearInterval(interval);
-						}
-					})
-				</script>
-
 			</div>
 		</section>
 		<section id="part-3">
@@ -226,6 +212,10 @@
 				<div class="skill">
 					<img src="img/skills/React.png" alt="React" class="icon">
 					<p class="item_title">React</p>
+				</div>
+				<div class="skill">
+					<img src="img/skills/Redux.png" alt="Redux" class="icon">
+					<p class="item_title">Redux</p>
 				</div>
 				<div class="skill">
 					<img src="img/skills/Python.png" alt="Python Django" class="icon">
